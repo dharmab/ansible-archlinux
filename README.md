@@ -29,3 +29,4 @@ Answer the prompts and watch it go.
 
 You will have to set the non-root user's password and sudo privileges manually using `passwd` and `visudo`. Enabling sudo access for the `wheel` group should suffice, e.g. `%wheel ALL=(ALL) ALL`.
 
+You can place an image file at "~/.wallpaper", and it will automatically be set as the desktop background at login. 
