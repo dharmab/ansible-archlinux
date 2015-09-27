@@ -1,6 +1,6 @@
 # Ansible Arch Linux Role
 
-This role is intended for automation of first-time setup of an Arch Linux development environment. It should not be used for day-to-day maintenance. **If you run this without first trialing it in a VM you are an idiot. If you run this without proper backups you are an idiot. If you use this playbook for regular maintenance of your Arch Linux installation you are an idiot.** Using this for regular updates violates [The Arch Way](https://wiki.archlinux.org/index.php/The_Arch_Way) and you're going to screw up your machine when manual intervention is required.
+This role is intended for automation of first-time setup and configuration file synchronization of an Arch Linux development environment. It should not be used for day-to-day maintenance/updates. **Don't run this if you don't have a backup, and don't use this as a repalcement for regular manual updates.** Using this for regular updates violates [The Arch Way](https://wiki.archlinux.org/index.php/The_Arch_Way) and you're going to screw up your machine when manual intervention is required.
 
 ## Variables
 
@@ -11,7 +11,6 @@ This role is intended for automation of first-time setup of an Arch Linux develo
 ## Usage
 
 Before running the playbook, perform a full upgrade and resolve any necessary manual interventions. Although I have tested the playbook and have found no destructive side effects, I cannot guarantee your system. Make sure your backups are current.
-
 
 Install Ansible from the official repositories:
 
