@@ -13,13 +13,13 @@
   become: yes
   become_user: "{{ archlinux_username }}"
 
-- name: template .vimrc
+- name: configure .vimrc
   file: src=vimrc dest=/home/{{ archlinux_username }}/.vimrc owner={{ archlinux_username }} group=users
   become: yes
   become_user: "{{ archlinux_username }}"
 
-- name: install Vundle plugins
-  command: "/usr/bin/vim +PluginInstall +qall!"
+- name: intall and update Vundle plugins
+  command: "/usr/bin/vim +PluginUpdate +qall!"
   become: yes
   become_user: "{{ archlinux_username }}"
 
