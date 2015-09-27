@@ -53,8 +53,6 @@ Plugin 'tpope/vim-commentary'
 " Markdown Preview
 Plugin 'kannokanno/previm'
 
-
-
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE CONFIG
@@ -138,13 +136,10 @@ let g:previm_open_cmd = 'google-chrome-stable'
 
 " Syntastic Tweaks
 " Display a statusline message if errors are detected
-{# We wrap this in a raw block to escape the braces #}
-{% raw -%}
 let g:syntastic_stl_format = '%E{Errors: %e}%B{,}%W{Warnings: %w}'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-{%- endraw %}
 " Automatically populate the list of error -> line number mappings
 " (Disabled by default for compatibility)
 let g:syntastic_always_populate_loc_list = 1
