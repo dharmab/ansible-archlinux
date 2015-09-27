@@ -1,0 +1,125 @@
+# ~/.bashrc
+
+# Set editor to vim because vi is old and nano is awful
+export EDITOR=vim
+
+# Set Java Swing UI Look and Feel to GTK, and nicer font antialiasing
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+
+# Determine if a command is available
+present() {
+    if [ "$#" -ne 1 ]; then
+        echo "Usage: present <command>"
+    fi
+
+    type "$1" >/dev/null 2>&1
+    
+    if [ $? -eq 0 ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Set Maven home
+present mvn
+if [ $? -eq 0 ]; then
+    export M2_HOME=/opt/maven
+fi
+
+# Install and run ruby gems in home directory
+present ruby
+if [ $? -eq 0 ]; then
+    export GEM_HOME="$(ruby -rubygems -e "puts Gem.user_dir")"
+    export PATH="$GEM_HOME/bin:$PATH"
+fi
+
+# If not running interactively, stop here
+[[ $- != *i* ]] && return
+
+# Colored output
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+# mkdir creates entire directory hierarchy
+alias mkdir='mkdir -p'
+
+# Shortcut for organized detailed file list
+alias ll='ls -lah --group-directories-first --color=auto'
+
+# Shortcut to go up one directory
+alias ..='cd ..'
+
+# Shortcut to get the disk size of a directory and contents
+sizeof() {
+    if [ "$#" -ne 1 ]; then
+        echo "Usage: sizeof <directory>"
+        return
+    fi
+    du -ch "$1" | grep total
+    return 0
+}
+
+# Shortcut to burn an ISO - edit with correct utility, syntax and device
+burniso() {
+    if [ -f "$1" ]; then
+        cdrecord -v -sao dev=/dev/cdrom "$1"
+    else
+        echo "burniso: '$1': File not found"
+    fi
+}
+
+# Shortcuts for Ansible playbook best practices
+ansible-init() {
+    touch site.yml
+    mkdir -p group_vars host_vars
+}
+
+ansible-add-role() {
+    if [ "$#" -ne 1 ]; then
+        echo "Usage: ansible-add-role <name>"
+    fi
+    touch ${1}.yml
+    mkdir -p roles/${1}/{tasks,handlers,templates,files,vars,meta}
+    touch roles/${1}/{tasks,handlers,vars,meta}/main.yml
+}
+
+# Set prompt
+bash_prompt() {
+    # unset color to term's fg color
+    local COLOR_NONE="\[\033[0m\]" 
+
+    # regular colors
+    local COLOR_BLACK="\[\033[0;30m\]"
+    local COLOR_RED="\[\033[0;31m\]"
+    local COLOR_GREEN="\[\033[0;32m\]"
+    local COLOR_YELLOW="\[\033[0;33m\]"
+    local COLOR_BLUE="\[\033[0;34m\]"
+    local COLOR_MAGENTA="\[\033[0;35m\]"
+    local COLOR_CYAN="\[\033[0;36m\]"
+    local COLOR_WHITE="\[\033[0;37m\]"
+
+    # emphasized (bolded) colors
+    local COLOR_BLACK_BOLD="\[\033[1;30m\]"
+    local COLOR_RED_BOLD="\[\033[1;31m\]"
+    local COLOR_GREEN_BOLD="\[\033[1;32m\]"
+    local COLOR_YELLOW_BOLD="\[\033[1;33m\]"
+    local COLOR_BLUE_BOLD="\[\033[1;34m\]"
+    local COLOR_MAGENTA_BOLD="\[\033[1;35m\]"
+    local COLOR_CYAN_BOLD="\[\033[1;36m\]"
+    local COLOR_WHITE_BOLD="\[\033[1;37m\]"
+
+    # background colors
+    local COLOR_BLACK_BG="\[\033[40m\]"
+    local COLOR_RED_BG="\[\033[41m\]"
+    local COLOR_GREEN_BG="\[\033[42m\]"
+    local COLOR_YELLOW_BG="\[\033[43m\]"
+    local COLOR_BLUE_BG="\[\033[44m\]"
+    local COLOR_MAGENTA_BG="\[\033[45m\]"
+    local COLOR_CYAN_BG="\[\033[46m\]"
+    local COLOR_WHITE_BG="\[\033[47m\]"
+
+    PS1="${COLOR_RED}[${COLOR_WHITE}\u@\h ${COLOR_BLUE}\W${COLOR_RED}]${COLOR_WHITE}\\$ ${COLOR_NONE}"
+}
+
+bash_prompt

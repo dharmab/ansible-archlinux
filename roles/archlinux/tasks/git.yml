@@ -1,0 +1,14 @@
+---
+- name: install git
+  pacman: name=git
+  become: yes
+
+- name: configure git name
+  command: "/usr/bin/git config --global user.name \"{{ archlinux_user_real_name }}\""
+  become: yes
+  become_user: "{{ archlinux_username }}"
+
+- name: configure git email
+  command: "/usr/bin/git config --global user.email \"{{ archlinux_user_email }}\""
+  become: yes
+  become_user: "{{ archlinux_username }}"

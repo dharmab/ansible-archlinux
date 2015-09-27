@@ -1,0 +1,154 @@
+" Enable Vim features
+set nocompatible
+
+" BEGIN VUNDLE CONFIG
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Vundle
+Plugin 'gmarik/Vundle.vim'
+
+" Base16 colors
+Plugin 'chriskempson/base16-vim'
+
+" Syntastic syntax checking
+Plugin 'scrooloose/syntastic'
+
+" YouCompleteMe completions
+Plugin 'Valloric/YouCompleteMe'
+
+" Emmet
+Plugin 'mattn/emmet-vim'
+
+" File tree
+Plugin 'scrooloose/nerdtree'
+
+" Sublime Text style multiple cursors
+Plugin 'terryma/vim-multiple-cursors'
+
+" Fancy statusbar
+Plugin 'bling/vim-airline'
+Plugin 'bling/vim-bufferline'
+
+" Git integration
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+
+" CtrlP fuzzy search
+Plugin 'kien/ctrlp.vim'
+
+" Ansible syntax and indentation
+Plugin 'chase/vim-ansible-yaml'
+
+" Salt syntax and indentation
+Plugin 'saltstack/salt-vim'
+
+" Automatically close parentheses, etc.
+Plugin 'Raimondi/delimitMate'
+
+" Hotkeys for commenting/uncommenting
+Plugin 'tpope/vim-commentary'
+
+" Markdown Preview
+Plugin 'kannokanno/previm'
+
+
+
+call vundle#end()
+filetype plugin indent on
+" END VUNDLE CONFIG
+
+" Allow the use of project-specific vimrc
+set exrc
+set secure
+
+" Color scheme
+" If using a Base16 terminal theme designed to keep the 16 ANSI colors intact
+" (a "256" variation) and have successfully modified your 256 colorspace with   
+" base16-shell you must uncomment the following line
+"let base16colorspace=256
+try
+    colorscheme base16-monokai
+catch
+    colorscheme slate
+endtry
+set background=dark
+syntax on
+
+" Unicode, because this is the future
+set encoding=utf-8
+
+" Sane defaults for indentation
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+
+" Show line numbers
+set number
+
+" Highlight current line
+set cursorline
+
+" Allow mouse
+set mouse=a
+
+" Spell check
+set spell 
+set spellsuggest=best,10
+
+" Wrap searches
+set wrapscan
+let mapleader = ","
+
+" Smart search case sensitivity
+set ignorecase
+set smartcase
+
+" Allow switching buffer even if current buffer contains unsaved changes
+set hidden
+
+" Disable scratch preview window
+set completeopt-=preview
+
+" Use Alt+hjkl to switch between windows
+nmap <silent> <A-h> :wincmd h<CR>
+nmap <silent> <A-j> :wincmd j<CR>
+nmap <silent> <A-k> :wincmd k<CR>
+nmap <silent> <A-l> :wincmd l<CR>
+
+" Airline tweaks
+" Always show statusline
+set laststatus=2
+" Use Powerline fonts
+let g:airline_powerline_fonts = 1
+
+" CtrlP tweaks
+" keybinds
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" Multiple cursors tweaks
+" Since we bound Ctrl+P, we have to rebind previous selection
+let g:multi_cursor_prev_key='<C-b>'
+
+" Command to open browser for Markdown Preview
+let g:previm_open_cmd = 'google-chrome-stable'
+
+" Syntastic Tweaks
+" Display a statusline message if errors are detected
+{# We wrap this in a raw block to escape the braces #}
+{% raw -%}
+let g:syntastic_stl_format = '%E{Errors: %e}%B{,}%W{Warnings: %w}'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+{%- endraw %}
+" Automatically populate the list of error -> line number mappings
+" (Disabled by default for compatibility)
+let g:syntastic_always_populate_loc_list = 1
+" Check files when they are opened
+let g:syntastic_check_on_open = 1
+" Don't check files when they are closed
+let g:syntastic_check_on_wq = 0

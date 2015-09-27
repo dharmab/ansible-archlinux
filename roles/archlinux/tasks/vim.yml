@@ -1,0 +1,29 @@
+---
+- name: install vim
+  pacman: name=gvim
+  become: yes
+
+- name: create .vimrc directory
+  file: path="/home/{{ archlinux_username }}/.vim/bundle" owner={{ archlinux_username }} group=users state=directory
+  become: yes
+  become_user: "{{ archlinux_username }}"
+
+- name: install Vundle
+  git: repo=https://github.com/gmarik/Vundle.vim.git dest="/home/{{ archlinux_username }}/.vim/bundle/Vundle.vim" accept_hostkey=yes
+  become: yes
+  become_user: "{{ archlinux_username }}"
+
+- name: template .vimrc
+  file: src=vimrc dest=/home/{{ archlinux_username }}/.vimrc owner={{ archlinux_username }} group=users
+  become: yes
+  become_user: "{{ archlinux_username }}"
+
+- name: install Vundle plugins
+  command: "/usr/bin/vim +PluginInstall +qall!"
+  become: yes
+  become_user: "{{ archlinux_username }}"
+
+- name: install YouCompleteMe
+  command: python2 /home/{{ archlinux_username }}/.vim/bundle/YouCompleteMe/install.py --clang-completer
+  become: yes
+  become_user: "{{ archlinux_username }}"

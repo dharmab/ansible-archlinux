@@ -1,0 +1,15 @@
+- name: install AUR packages
+  packer: name={{ item }}
+  with_items:
+    - packer # ensure packer is up to date
+    - pacaur
+    - powerline-fonts-git # used by vim-powerline
+    - google-chrome
+    - google-talkplugin
+    - intellij-idea-ultimate-edition
+    - sublime-text-dev
+    - git-annex-bin
+    - menda-themes-dark # a nice dark theme
+  become: yes
+  become_user: "{{ archlinux_username }}"
+

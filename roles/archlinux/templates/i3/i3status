@@ -1,0 +1,49 @@
+general {
+    colors = true
+        interval = 1
+}
+
+order += "cpu_temperature 0"
+cpu_temperature 0 {
+    format = "CPU: %degrees °C"
+}
+
+order += "battery 0"
+battery 0 {
+    format = "BAT: %status (%percentage)"
+    format_down = "BAT: N/A"
+    path = "/sys/class/power_supply/BAT/uevent"
+    low_threshold = 15
+}
+
+{% for interface in ansible_interfaces %}
+{% if interface|truncate(3, True, "") == "tun" %}
+order += "ethernet {{ interface }}"
+ethernet {{ interface }} {
+    format_up = "VPN: %ip (%speed)"
+    format_down = "VPN: disconnected"
+}
+
+{% endif %}
+{% if interface|truncate(1, True, "") == "e" %}
+order += "ethernet {{ interface }}"
+ethernet {{ interface }} {
+    format_up = "LAN: %ip (%speed)"
+    format_down = "LAN: disconnected"
+}
+
+{% endif %}
+{% if interface|truncate(1, True, "") == "w" %}
+order += "wireless {{ interface }}"
+wireless {{ interface }} {
+    format_up = "WLAN: %ip (%essid, %quality, %bitrate)"
+    format_down = "WLAN: disconnected"
+}
+
+{% endif %}
+{% endfor %}
+
+order += "tztime local"
+tztime local {
+    format = "%Y-%m-%d %H:%M:%S"
+}

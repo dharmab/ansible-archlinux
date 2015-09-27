@@ -1,0 +1,28 @@
+---
+- name: update pacman cache
+  pacman: update_cache=yes
+  become: yes
+
+- name: install reflector
+  pacman: name=reflector state=present
+  become: yes
+
+- name: check if mirrorlist was recently updated
+  # This is simpler with find in Ansible 2.0 and should be changed when that is
+  # release is available in Arch
+  # find: paths="/etc/pacman.d/mirrorlist" age=1d
+  stat: path="/etc/pacman.d/mirrorlist"
+  register: mirrorlist_age
+
+- name: update pacman mirrorlist
+  command: /usr/bin/reflector --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist
+  become: yes
+  when: "{{ mirrorlist_age.stat.mtime }} < {{ ansible_date_time.epoch|int - (60 * 60 * 24) }}"
+
+- name: update pacman package lists
+  command: /usr/bin/pacman -Syy --noconfirm
+  become: yes
+
+- name: perform full upgrade
+  command: /usr/bin/pacman -Su --noconfirm
+  become: yes

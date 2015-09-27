@@ -1,0 +1,83 @@
+---
+- include: pacman.yml
+- include: user.yml
+- include: virtualization.yml
+- include: git.yml
+- include: c-family.yml
+- include: java.yml
+- include: python.yml
+- include: ruby.yml
+- include: vim.yml
+- include: wallpaper.yml
+
+- name: install utilities
+  pacman: name={{ item }} state=present
+  with_items:
+    - curl
+    - aria2
+    - rsync
+    - openssh
+    - ntp
+    - alsa-utils
+    - htop
+    - nmap
+  become: yes
+
+- name: enable network time
+  service: name=ntpd state=started enabled=yes
+  become: yes
+
+- name: install fonts
+  pacman: name={{ item }} state=present
+  with_items:
+    - ttf-dejavu
+    - ttf-liberation
+    - ttf-droid
+    - ttf-inconsolata
+    - adobe-source-code-pro-fonts
+  become: yes
+
+- name: install GUI
+  pacman: name={{ item }} state=present
+  with_items:
+    - lightdm
+    - lightdm-gtk-greeter
+    - lxappearance
+    - arandr
+    - elementary-icon-theme
+    - xcursor-simpleandsoft
+  become: yes
+
+- name: enable GUI on boot
+  service: name=lightdm enabled=yes
+  become: yes
+
+- name: template .bashrc
+  become: yes
+  file: src=bashrc dest=/home/{{ archlinux_username}}/.bashrc owner={{ archlinux_username }} group=users
+
+- name: template Xresources
+  file: src=Xresources dest=/home/{{ archlinux_username }}/.Xresources owner={{ archlinux_username }} group=users
+  become: yes
+
+- name: install pulseaudio/alsa
+  pacman: name={{ item }} state=present
+  with_items:
+    - alsa-utils
+    - pulseaudio
+    - pulseaudio-alsa
+    - paprefs
+    - pavucontrol
+
+- name: install applications
+  pacman: name={{ item }} state=present
+  with_items:
+    - xterm
+    - pcmanfm
+    - evince
+    - gimp
+    - calligra-krita
+    - viewnior
+    - vlc
+  become: yes
+

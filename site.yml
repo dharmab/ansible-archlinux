@@ -1,0 +1,14 @@
+- hosts: localhost
+  roles:
+    - archlinux
+  vars_prompt:
+    - name: "archlinux_username"
+      prompt: "Enter your system username"
+      private: no
+    - name: "archlinux_user_real_name"
+      prompt: "Enter your full real name"
+      private: no
+    - name: "archlinux_user_email"
+      prompt: "Enter your email address"
+      private: no
+

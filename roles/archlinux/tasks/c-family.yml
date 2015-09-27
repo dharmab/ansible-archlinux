@@ -1,0 +1,10 @@
+---
+- name: install C/C++ development tools
+  pacman: name={{ item }}
+  with_items: 
+    - base-devel
+    - cmake
+    - premake
+    - gdb
+    - valgrind
+  become: yes
