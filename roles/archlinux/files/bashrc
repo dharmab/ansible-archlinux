@@ -60,30 +60,6 @@ sizeof() {
     return 0
 }
 
-# Shortcut to burn an ISO - edit with correct utility, syntax and device
-burniso() {
-    if [ -f "$1" ]; then
-        cdrecord -v -sao dev=/dev/cdrom "$1"
-    else
-        echo "burniso: '$1': File not found"
-    fi
-}
-
-# Shortcuts for Ansible playbook best practices
-ansible-init() {
-    touch site.yml
-    mkdir -p group_vars host_vars
-}
-
-ansible-add-role() {
-    if [ "$#" -ne 1 ]; then
-        echo "Usage: ansible-add-role <name>"
-    fi
-    touch ${1}.yml
-    mkdir -p roles/${1}/{tasks,handlers,templates,files,vars,meta}
-    touch roles/${1}/{tasks,handlers,vars,meta}/main.yml
-}
-
 # Set prompt
 bash_prompt() {
     # unset color to term's fg color
