@@ -104,6 +104,9 @@ let mapleader = ","
 set ignorecase
 set smartcase
 
+" Show completions when using commands like :edit
+set wildmenu
+
 " Allow switching buffer even if current buffer contains unsaved changes
 set hidden
 
