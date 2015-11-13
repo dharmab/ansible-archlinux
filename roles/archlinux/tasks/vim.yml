@@ -18,7 +18,7 @@
   become: yes
   become_user: "{{ archlinux_username }}"
 
-- name: intall and update Vundle plugins
+- name: install and update Vundle plugins
   command: "/usr/bin/vim +PluginUpdate +qall!"
   become: yes
   become_user: "{{ archlinux_username }}"
