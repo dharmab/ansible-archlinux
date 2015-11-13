@@ -89,6 +89,9 @@ set number
 " Highlight current line
 set cursorline
 
+" Highlight columns 80 and 120
+set colorcolumn=80,120
+
 " Allow mouse
 set mouse=a
 
