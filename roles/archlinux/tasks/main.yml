@@ -54,10 +54,10 @@
 
 - name: template .bashrc
   become: yes
-  file: src=bashrc dest=/home/{{ archlinux_username}}/.bashrc owner={{ archlinux_username }} group=users
+  copy: src=bashrc dest=/home/{{ archlinux_username}}/.bashrc owner={{ archlinux_username }} group=users
 
 - name: template Xresources
-  file: src=Xresources dest=/home/{{ archlinux_username }}/.Xresources owner={{ archlinux_username }} group=users
+  copy: src=Xresources dest=/home/{{ archlinux_username }}/.Xresources owner={{ archlinux_username }} group=users
   become: yes
 
 - name: install pulseaudio/alsa

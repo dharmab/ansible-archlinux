@@ -4,7 +4,7 @@
   become: yes
 
 - name: create .vimrc directory
-  file: path="/home/{{ archlinux_username }}/.vim/bundle" owner={{ archlinux_username }} group=users state=directory
+  copy: path="/home/{{ archlinux_username }}/.vim/bundle" owner={{ archlinux_username }} group=users state=directory
   become: yes
   become_user: "{{ archlinux_username }}"
 
@@ -14,7 +14,7 @@
   become_user: "{{ archlinux_username }}"
 
 - name: configure .vimrc
-  file: src=vimrc dest=/home/{{ archlinux_username }}/.vimrc owner={{ archlinux_username }} group=users
+  copy: src=vimrc dest=/home/{{ archlinux_username }}/.vimrc owner={{ archlinux_username }} group=users
   become: yes
   become_user: "{{ archlinux_username }}"
 

@@ -65,7 +65,7 @@ set secure
 " If using a Base16 terminal theme designed to keep the 16 ANSI colors intact
 " (a "256" variation) and have successfully modified your 256 colorspace with   
 " base16-shell you must uncomment the following line
-"let base16colorspace=256
+let base16colorspace=256
 try
     colorscheme base16-monokai
 catch
