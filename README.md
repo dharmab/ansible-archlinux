@@ -1,6 +1,6 @@
 # Ansible Arch Linux Role
 
-This role is intended for automation of first-time setup and configuration file synchronization of an Arch Linux development environment. It should not be used for day-to-day maintenance/updates. **Don't run this if you don't have a backup, and don't use this as a repalcement for regular manual updates.** Using this for regular updates violates [The Arch Way](https://wiki.archlinux.org/index.php/The_Arch_Way) and you're going to screw up your machine when manual intervention is required.
+This role is intended for automation of first-time setup and configuration file synchronization of an Arch Linux development environment. It should not be used for day-to-day maintenance/updates. **Don't run this if you don't have a backup, and don't use this as a replacement for regular manual updates.** Using this for regular updates violates [The Arch Way](https://wiki.archlinux.org/index.php/The_Arch_Way) and you're going to screw up your machine when manual intervention is required.
 
 ## Variables
 
