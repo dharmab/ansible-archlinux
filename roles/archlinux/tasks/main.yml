@@ -8,6 +8,7 @@
 - include: python.yml
 - include: ruby.yml
 - include: vim.yml
+- include: i3.yml
 - include: wallpaper.yml
 
 - name: install utilities
