@@ -53,6 +53,9 @@ Plugin 'tpope/vim-commentary'
 " Markdown Preview
 Plugin 'kannokanno/previm'
 
+" Highlight trailing whitespace
+Plugin 'ntpeters/vim-better-whitespace'
+
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE CONFIG
