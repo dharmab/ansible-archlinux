@@ -1,5 +1,5 @@
-XTerm*faceName: Inconsolata for Powerline:style=Regular:size=11
-XTerm*Border: off
+UXTerm*faceName: Inconsolata for Powerline:style=Regular:size=16
+UXTerm*Border: off
 *VT100.colorBDMode: true
 *VT100.colorBD: red
 *VT100.colorULMode: true
