@@ -176,5 +176,9 @@ let g:syntastic_check_on_open = 1
 " Don't check files when they are closed
 let g:syntastic_check_on_wq = 0
 
+" GitGutter tweaks
+" Display diff markers between index and HEAD
+let g:gitgutter_diff_args = ' HEAD '
+
 " If using SuperTab instead of YCM, list completions top-to-bottom
 let g:SuperTabDefaultCompletionType = "<c-n>"
