@@ -56,6 +56,9 @@ Plugin 'kannokanno/previm'
 " Highlight trailing whitespace
 Plugin 'ntpeters/vim-better-whitespace'
 
+" Jump around Vimium-style with Leader-Leader-Motion
+Plugin 'easymotion/vim-easymotion'
+
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE CONFIG
@@ -118,6 +121,9 @@ set hidden
 
 " Disable scratch preview window
 set completeopt-=preview
+
+" Use comma as the leader key
+let mapleader=','
 
 " Use Alt+hjkl to switch between windows
 nmap <silent> <A-h> :wincmd h<CR>
