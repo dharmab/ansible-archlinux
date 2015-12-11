@@ -6,28 +6,36 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" Vundle
+" Vundle, a plugin manager for vim
 Plugin 'gmarik/Vundle.vim'
 
-" Base16 colors
+" Base16 colorscheme
 Plugin 'chriskempson/base16-vim'
 
 " Syntastic syntax checking
+" Install developer tools for syntax checking
+" Install flake8 for Python PEP8
 Plugin 'scrooloose/syntastic'
 
 " YouCompleteMe completions
 Plugin 'Valloric/YouCompleteMe'
+" If YCM is unavailable for your platform, try SuperTab instead
+"Plugin 'ervandew/supertab'
 
-" Emmet
+" Emmet, an HTML/CSS macro engine
+" The trigger key is Ctrl-y-,
 Plugin 'mattn/emmet-vim'
 
 " File tree
+" Use :NERDTree to open the tree
 Plugin 'scrooloose/nerdtree'
 
 " Sublime Text style multiple cursors
+" Use Ctrl+n to highlight matches and Ctrl+b to undo highlight
 Plugin 'terryma/vim-multiple-cursors'
 
 " Fancy statusbar
+" Powerline fonts recommended
 Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
 
@@ -36,6 +44,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 " CtrlP fuzzy search
+" Use Ctrl+P to search a project for a file
 Plugin 'kien/ctrlp.vim'
 
 " Ansible syntax and indentation
@@ -48,15 +57,19 @@ Plugin 'saltstack/salt-vim'
 Plugin 'Raimondi/delimitMate'
 
 " Hotkeys for commenting/uncommenting
+" g-c-c to toggle a line, g-c-Motion to toggle a motion
 Plugin 'tpope/vim-commentary'
 
 " Markdown Preview
+" Use :PrevimOpen while editing Markdown to open a live preview
 Plugin 'kannokanno/previm'
 
 " Highlight trailing whitespace
+" Use :StripWhitespace to remove trailing shitespace
 Plugin 'ntpeters/vim-better-whitespace'
 
-" Jump around Vimium-style with Leader-Leader-Motion
+" Jump around Vimium-style 
+" Use Leader-Leader-Motion <target> to jump around
 Plugin 'easymotion/vim-easymotion'
 
 call vundle#end()
@@ -69,7 +82,7 @@ set secure
 
 " Color scheme
 " If using a Base16 terminal theme designed to keep the 16 ANSI colors intact
-" (a "256" variation) and have successfully modified your 256 colorspace with   
+" (a "256" variation) and have successfully modified your 256 colorspace with
 " base16-shell you must uncomment the following line
 let base16colorspace=256
 try
@@ -102,7 +115,7 @@ set colorcolumn=80,120
 set mouse=a
 
 " Spell check
-set spell 
+set spell
 set spellsuggest=best,10
 
 " Wrap searches
@@ -162,3 +175,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 " Don't check files when they are closed
 let g:syntastic_check_on_wq = 0
+
+" If using SuperTab instead of YCM, list completions top-to-bottom
+let g:SuperTabDefaultCompletionType = "<c-n>"
