@@ -81,16 +81,16 @@ set exrc
 set secure
 
 " Color scheme
-" If using a Base16 terminal theme designed to keep the 16 ANSI colors intact
-" (a "256" variation) and have successfully modified your 256 colorspace with
-" base16-shell you must uncomment the following line
+" 256-color configuration options
+set t_Co=256
 let base16colorspace=256
+" Enable colorscheme
+set background=dark
 try
-    colorscheme base16-monokai
+    colorscheme base16-default
 catch
     colorscheme slate
 endtry
-set background=dark
 syntax on
 
 " Unicode, because this is the future
