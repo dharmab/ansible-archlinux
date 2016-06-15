@@ -27,7 +27,7 @@ client.unfocused        #333333 #222222 #888888 @292d2e
 client.urgent           #333333 #FF0000 #ffffff #900000
 
 # start a terminal
-bindsym $mod+Return exec xterm 
+bindsym $mod+Return exec uxterm
 
 # kill focused window
 bindsym $mod+Shift+q kill

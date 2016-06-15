@@ -7,9 +7,9 @@
     - dmenu
   
 - name: template i3 configuration
-  file: src=i3/config dest=/home/{{ archlinux_username }}/.i3/config owner={{ archlinux_username }} group=users
+  template: src=i3/config dest=/home/{{ archlinux_username }}/.i3/config owner={{ archlinux_username }} group=users
   become: yes
 
 - name: template i3status configuration
-  file: src=i3/i3status dest=/home/{{ archlinux_username }}/.i3/i3status owner={{ archlinux_username }} group=users
+  template: src=i3/i3status dest=/home/{{ archlinux_username }}/.i3/i3status owner={{ archlinux_username }} group=users
   become: yes
