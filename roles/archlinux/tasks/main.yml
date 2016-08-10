@@ -77,7 +77,7 @@
     - pcmanfm
     - evince
     - gimp
-    - calligra-krita
+    - krita
     - viewnior
     - vlc
   become: yes
