@@ -6,6 +6,10 @@
     - i3status
     - dmenu
   
+- name: create i3 configuration directory
+  file: name=/home/{{ archlinux_username }}/.i3 state=directory owner={{ archlinux_username }} group=users
+  become: yes
+
 - name: template i3 configuration
   template: src=i3/config dest=/home/{{ archlinux_username }}/.i3/config owner={{ archlinux_username }} group=users
   become: yes
