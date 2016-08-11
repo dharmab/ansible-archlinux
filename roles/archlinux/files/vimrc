@@ -87,7 +87,7 @@ let base16colorspace=256
 " Enable colorscheme
 set background=dark
 try
-    colorscheme base16-default
+    colorscheme base16-default-dark
 catch
     colorscheme slate
 endtry

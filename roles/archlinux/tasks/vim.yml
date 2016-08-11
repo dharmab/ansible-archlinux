@@ -24,6 +24,12 @@
   become_user: "{{ archlinux_username }}"
 
 - name: install YouCompleteMe
-  command: python2 /home/{{ archlinux_username }}/.vim/bundle/YouCompleteMe/install.py --clang-completer
+  command: "python /home/{{ archlinux_username }}/.vim/bundle/YouCompleteMe/install.py"
+  args:
+    chdir: "/home/{{ archlinux_username }}/.vim/bundle/YouCompleteMe"
   become: yes
   become_user: "{{ archlinux_username }}"
+
+- name: install powerline fonts
+  pacman: name=powerline-fonts
+  become: yes
