@@ -18,6 +18,8 @@ Install Ansible from the official repositories:
 # pacman -Syu ansible
 ```
 
+Go to the AUR page for [cower](https://aur.archlinux.org/packages/cower/) and add the author's GPG key.
+
 Run the included script:
 
 ```bash

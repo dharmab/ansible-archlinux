@@ -4,11 +4,11 @@
   become: yes
 
 - name: configure git name
-  command: "/usr/bin/git config --global user.name \"{{ archlinux_user_real_name }}\""
+  git_config: name=user.name value="{{ archlinux_user_real_name }}" scope=global
   become: yes
   become_user: "{{ archlinux_username }}"
 
 - name: configure git email
-  command: "/usr/bin/git config --global user.email \"{{ archlinux_user_email }}\""
+  git_config: name=user.email value="{{ archlinux_user_email }}" scope=global
   become: yes
   become_user: "{{ archlinux_username }}"

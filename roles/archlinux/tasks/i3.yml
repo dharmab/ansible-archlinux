@@ -1,11 +1,12 @@
 - name: install i3
   pacman: name={{ item }}
   with_items:
+    - xorg
     - i3-wm
     - i3lock
     - i3status
     - dmenu
-  
+
 - name: create i3 configuration directory
   file: name=/home/{{ archlinux_username }}/.i3 state=directory owner={{ archlinux_username }} group=users
   become: yes
