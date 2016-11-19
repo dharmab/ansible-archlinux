@@ -13,7 +13,7 @@ present() {
     fi
 
     type "$1" >/dev/null 2>&1
-    
+
     if [ $? -eq 0 ]; then
         return 0
     else
@@ -188,7 +188,7 @@ colorscheme() {
 # Set prompt
 bash_prompt() {
     # forground colors
-    local COLOR_NONE="\[\033[0m\]" 
+    local COLOR_NONE="\[\033[0m\]"
 
     # regular colors
     local COLOR_RED="\[\033[0;31m\]"
