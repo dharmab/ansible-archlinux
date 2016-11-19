@@ -41,8 +41,7 @@
 - name: install GUI
   pacman: name={{ item }} state=present
   with_items:
-    - lightdm
-    - lightdm-gtk-greeter
+    - lxdm
     - lxappearance
     - arandr
     - elementary-icon-theme
@@ -50,7 +49,7 @@
   become: yes
 
 - name: enable GUI on boot
-  service: name=lightdm enabled=yes
+  service: name=lxdm enabled=yes
   become: yes
 
 - name: template .bashrc
