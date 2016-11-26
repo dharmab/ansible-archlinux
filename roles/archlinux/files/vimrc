@@ -68,7 +68,7 @@ Plugin 'kannokanno/previm'
 " Use :StripWhitespace to remove trailing shitespace
 Plugin 'ntpeters/vim-better-whitespace'
 
-" Jump around Vimium-style 
+" Jump around Vimium-style
 " Use Leader-Leader-Motion <target> to jump around
 Plugin 'easymotion/vim-easymotion'
 
