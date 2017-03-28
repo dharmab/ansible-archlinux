@@ -12,9 +12,7 @@ present() {
         echo "Usage: present <command>"
     fi
 
-    type "$1" >/dev/null 2>&1
-
-    if [ $? -eq 0 ]; then
+    if type "$1" >/dev/null 2>&1; then
         return 0
     else
         return 1
@@ -22,14 +20,12 @@ present() {
 }
 
 # Set Maven home
-present mvn
-if [ $? -eq 0 ]; then
+if present mvn; then
     export M2_HOME=/opt/maven
 fi
 
 # Install and run ruby gems in home directory
-present ruby
-if [ $? -eq 0 ]; then
+if present ruby; then
     GEM_HOME="$(ruby -rubygems -e 'puts Gem.user_dir')"
     export GEM_HOME
     export PATH="$GEM_HOME/bin:$PATH"
