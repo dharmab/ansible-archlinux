@@ -1,6 +1,10 @@
 " Enable Vim features
 set nocompatible
 
+" Use spacebar as the leader key
+nnoremap <SPACE> <Nop>
+let mapleader="\<Space>"
+
 " BEGIN VUNDLE CONFIG
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -21,10 +25,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 " If YCM is unavailable for your platform, try SuperTab instead
 "Plugin 'ervandew/supertab'
-
-" Emmet, an HTML/CSS macro engine
-" The trigger key is Ctrl-y-,
-Plugin 'mattn/emmet-vim'
 
 " File tree
 " Use :NERDTree to open the tree
@@ -53,6 +53,10 @@ Plugin 'chase/vim-ansible-yaml'
 " Salt syntax and indentation
 Plugin 'saltstack/salt-vim'
 
+" Python docstring generation
+" Cursor over a def or class and type :Pydocstring
+Plugin 'heavenshell/vim-pydocstring'
+
 " Automatically close parentheses, etc.
 Plugin 'Raimondi/delimitMate'
 
@@ -72,6 +76,9 @@ Plugin 'ntpeters/vim-better-whitespace'
 " Use Leader-Leader-Motion <target> to jump around
 Plugin 'easymotion/vim-easymotion'
 
+" Automatically detect indentation settings
+Plugin 'tpope/vim-sleuth'
+
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE CONFIG
@@ -82,8 +89,8 @@ set secure
 
 " Color scheme
 " 256-color configuration options
-set t_Co=256
-let base16colorspace=256
+" set t_Co=256
+" let base16colorspace=256
 " Enable colorscheme
 set background=dark
 try
@@ -97,10 +104,7 @@ syntax on
 set encoding=utf-8
 
 " Sane defaults for indentation
-set expandtab
-set softtabstop=4
-set shiftwidth=4
-set autoindent
+set tabstop=4
 
 " Show line numbers
 set number
@@ -120,7 +124,6 @@ set spellsuggest=best,10
 
 " Wrap searches
 set wrapscan
-let mapleader = ","
 
 " Smart search case sensitivity
 set ignorecase
@@ -134,9 +137,6 @@ set hidden
 
 " Disable scratch preview window
 set completeopt-=preview
-
-" Use comma as the leader key
-let mapleader=','
 
 " Use Alt+hjkl to switch between windows
 nmap <silent> <A-h> :wincmd h<CR>
@@ -162,6 +162,9 @@ let g:multi_cursor_prev_key='<C-b>'
 " Command to open browser for Markdown Preview
 let g:previm_open_cmd = 'google-chrome-stable'
 
+" YouCompleteMe tweaks
+let g:ycm_python_binary_path='python'
+
 " Syntastic Tweaks
 " Display a statusline message if errors are detected
 let g:syntastic_stl_format = '%E{Errors: %e}%B{,}%W{Warnings: %w}'
@@ -175,6 +178,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 " Don't check files when they are closed
 let g:syntastic_check_on_wq = 0
+" Don't check for long lines in Python files
+let g:syntastic_python_flake8_args='--ignore=E501'
 
 " GitGutter tweaks
 " Display diff markers between index and HEAD
