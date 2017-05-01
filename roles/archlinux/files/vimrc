@@ -26,6 +26,9 @@ Plugin 'Valloric/YouCompleteMe'
 " If YCM is unavailable for your platform, try SuperTab instead
 "Plugin 'ervandew/supertab'
 
+" Jedi completer for Python
+Plugin 'davidhalter/jedi-vim'
+
 " File tree
 " Use :NERDTree to open the tree
 Plugin 'scrooloose/nerdtree'
@@ -52,10 +55,6 @@ Plugin 'chase/vim-ansible-yaml'
 
 " Salt syntax and indentation
 Plugin 'saltstack/salt-vim'
-
-" Python docstring generation
-" Cursor over a def or class and type :Pydocstring
-Plugin 'heavenshell/vim-pydocstring'
 
 " Automatically close parentheses, etc.
 Plugin 'Raimondi/delimitMate'
