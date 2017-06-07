@@ -145,6 +145,8 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 
 " CtrlP tweaks
+" Ignore certain filetypes
+set wildignore+=*.pyc
 " keybinds
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
