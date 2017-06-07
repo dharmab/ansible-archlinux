@@ -48,7 +48,7 @@ Plugin 'airblade/vim-gitgutter'
 
 " CtrlP fuzzy search
 " Use Ctrl+P to search a project for a file
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " Ansible syntax and indentation
 Plugin 'chase/vim-ansible-yaml'
