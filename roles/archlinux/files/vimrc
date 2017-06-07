@@ -87,16 +87,11 @@ set exrc
 set secure
 
 " Color scheme
-" 256-color configuration options
-" set t_Co=256
-" let base16colorspace=256
-" Enable colorscheme
-set background=dark
-try
-    colorscheme base16-default-dark
-catch
-    colorscheme slate
-endtry
+" Requires https://github.com/chriskempson/base16-shell
+if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+endif
 syntax on
 
 " Unicode, because this is the future
