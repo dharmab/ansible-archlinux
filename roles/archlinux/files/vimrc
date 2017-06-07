@@ -176,6 +176,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " Don't check for long lines in Python files
 let g:syntastic_python_flake8_args='--ignore=E501'
+" Don't check for non-constant source in Shell files
+let g:syntastic_sh_shellcheck_args='--exclude SC1090'
 
 " GitGutter tweaks
 " Display diff markers between index and HEAD
