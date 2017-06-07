@@ -84,12 +84,3 @@
 - name: create AUR build directory
   file: name=/home/{{ archlinux_username }}/build state=directory owner={{ archlinux_username }} group=users
   become: yes
-
-- name: install aur packages
-  aur: name={{ item }} user={{ archlinux_username }} dir=/home/{{ archlinux_username }}/build
-  with_items:
-    - cower
-    - pacaur
-    - google-chrome
-    - sublime-text-dev
-    - intellij-idea-ultimate-edition

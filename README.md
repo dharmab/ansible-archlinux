@@ -15,15 +15,13 @@ Before running the playbook, perform a full upgrade and resolve any necessary ma
 Install Ansible from the official repositories:
 
 ```bash
-# pacman -Syu ansible
+pacman -Syu ansible
 ```
 
-Go to the AUR page for [cower](https://aur.archlinux.org/packages/cower/) and add the author's GPG key.
+Run the playbook:
 
-Run the included script:
-
-```bash
-./run.sh
+```
+ansible-playbook --connection=local --ask-sudo-pass "${playbook_path}"
 ```
 
 Answer the prompts and watch it go.
