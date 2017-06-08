@@ -1,7 +1,7 @@
 ---
 - name: install C/C++ development tools
   pacman: name={{ item }}
-  with_items: 
+  with_items:
     - base-devel
     - cmake
     - premake
