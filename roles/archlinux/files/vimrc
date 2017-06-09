@@ -26,9 +26,6 @@ Plugin 'Valloric/YouCompleteMe'
 " If YCM is unavailable for your platform, try SuperTab instead
 "Plugin 'ervandew/supertab'
 
-" Jedi completer for Python
-Plugin 'davidhalter/jedi-vim'
-
 " File tree
 " Use :NERDTree to open the tree
 Plugin 'scrooloose/nerdtree'
