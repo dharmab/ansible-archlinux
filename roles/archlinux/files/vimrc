@@ -75,6 +75,9 @@ Plugin 'easymotion/vim-easymotion'
 " Automatically detect indentation settings
 Plugin 'tpope/vim-sleuth'
 
+" Ack/Ag search
+Plugin 'mileszs/ack.vim'
+
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE CONFIG
@@ -182,3 +185,10 @@ let g:gitgutter_diff_args = ' HEAD '
 
 " If using SuperTab instead of YCM, list completions top-to-bottom
 let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" Ack.vim tweaks
+" Use Ag if available
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+    cnoreabbrev Ag Ack
+endif
