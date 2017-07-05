@@ -1,4 +1,8 @@
 ---
+- name: remove vim minimal package
+  pacman: name=vim state=absent
+  become: yes
+
 - name: install vim
   pacman: name=gvim
   become: yes
