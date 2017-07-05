@@ -1,6 +1,6 @@
 general {
     colors = true
-        interval = 1
+    interval = 1
 }
 
 order += "cpu_temperature 0"
@@ -17,32 +17,27 @@ battery 0 {
 }
 
 {% for interface in ansible_interfaces %}
-{% if interface|truncate(3, True, "") == "tun" %}
+{% if interface.startswith("tun") %}
 order += "ethernet {{ interface }}"
 ethernet {{ interface }} {
     format_up = "VPN: %ip (%speed)"
     format_down = "VPN: disconnected"
 }
-
-{% endif %}
-{% if interface|truncate(1, True, "") == "e" %}
+{% elif interface.startswith("e") %}
 order += "ethernet {{ interface }}"
 ethernet {{ interface }} {
     format_up = "LAN: %ip (%speed)"
     format_down = "LAN: disconnected"
 }
-
-{% endif %}
-{% if interface|truncate(1, True, "") == "w" %}
+{% elif interface.startswith("w") %}
 order += "wireless {{ interface }}"
 wireless {{ interface }} {
     format_up = "WLAN: %ip (%essid, %quality, %bitrate)"
     format_down = "WLAN: disconnected"
 }
+{% else %}{% endif %}
 
-{% endif %}
 {% endfor %}
-
 order += "tztime local"
 tztime local {
     format = "%Y-%m-%d %H:%M:%S"
