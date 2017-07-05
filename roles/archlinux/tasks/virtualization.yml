@@ -3,9 +3,6 @@
   pacman: name={{ item }}
   with_items:
     - virtualbox
+    - virtualbox-host-modules-arch
     - vagrant
-  become: yes
-
-- name: configure virtualbox kernel modules
-  copy: src=virtualbox.conf dest=/etc/modules-load.d/virtualbox.conf
   become: yes
