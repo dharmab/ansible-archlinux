@@ -18,6 +18,7 @@
     - aria2
     - curl
     - htop
+    - httpie
     - nmap
     - ntp
     - openssh
