@@ -14,14 +14,15 @@
 - name: install utilities
   pacman: name={{ item }} state=present
   with_items:
-    - curl
-    - aria2
-    - rsync
-    - openssh
-    - ntp
     - alsa-utils
+    - aria2
+    - curl
     - htop
     - nmap
+    - ntp
+    - openssh
+    - rsync
+    - the_silver_searcher
   become: yes
 
 - name: enable network time
