@@ -77,3 +77,8 @@ bash_prompt() {
 }
 
 bash_prompt
+
+# direnv hook
+if present direnv; then
+    eval "$(direnv hook bash)"
+fi
