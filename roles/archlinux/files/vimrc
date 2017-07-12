@@ -78,6 +78,9 @@ Plugin 'tpope/vim-sleuth'
 " Ack/Ag search
 Plugin 'mileszs/ack.vim'
 
+" Better JSON
+Plugin 'elzr/vim-json'
+
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE CONFIG
@@ -192,3 +195,11 @@ if executable('ag')
     let g:ackprg = 'ag --vimgrep'
     cnoreabbrev Ag Ack
 endif
+
+" JSON tweaks
+" High contrast colors (dark theme assumed)
+highlight jsonKeyword ctermfg=Blue
+highlight jsonString ctermfg=Yellow
+highlight jsonNumber ctermfg=Red
+highlight jsonBoolean ctermfg=Red
+highlight jsonNull ctermfg=Red
