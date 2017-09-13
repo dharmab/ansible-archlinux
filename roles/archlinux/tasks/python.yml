@@ -6,6 +6,7 @@
     - python2-pip
     - python
     - python-pip
+  become: yes
 
 - name: install flake8 for python 2
   pip: name=flake8 executable=pip2
