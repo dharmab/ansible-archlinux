@@ -21,7 +21,7 @@ pacman -Syu ansible
 Run the playbook:
 
 ```
-ansible-playbook --connection=local --ask-sudo-pass "${playbook_path}"
+ansible-playbook --ask-sudo-pass site.yml
 ```
 
 Answer the prompts and watch it go.
