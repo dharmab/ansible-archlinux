@@ -62,6 +62,12 @@ sizeof() {
     return 0
 }
 
+# Shortcut to update vim plugins
+vim-plugin-update() {
+    vim +PluginUpdate +qall
+    "$HOME/.vim/bundle/YouCompleteMe/install.py" --clang-completer --gocode-completer
+}
+
 # Set prompt
 bash_prompt() {
     # foreground colors
