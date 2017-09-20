@@ -1,0 +1,9 @@
+#!/bin/bash
+search_term="$1"
+field="$2"
+
+if [[ -z "$field" ]]; then
+    field=''
+fi
+
+op-get "$search_term" "$field" | xclip

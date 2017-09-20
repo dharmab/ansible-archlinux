@@ -93,3 +93,14 @@
 - name: create AUR build directory
   file: name=/home/{{ archlinux_username }}/build state=directory owner={{ archlinux_username }} group=users
   become: yes
+
+- name: create scripts directory
+  file: name=/home/{{ archlinux_username }}/bin state=directory owner={{ archlinux_username }} group=users
+  become: yes
+
+- name: install utility scripts
+  copy: src={{ item }} dest=/home/{{ archlinux_username }}/bin/{{ item }} owner={{ archlinux_username }} group=users mode=755
+  with_items:
+    - op-get
+    - op-copy
+  become: yes

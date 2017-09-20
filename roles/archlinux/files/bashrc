@@ -31,6 +31,9 @@ if present ruby; then
     export PATH="$GEM_HOME/bin:$PATH"
 fi
 
+# Include a local bin directory
+[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
+
 # If not running interactively, stop here
 [[ $- != *i* ]] && return
 
