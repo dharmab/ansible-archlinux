@@ -25,10 +25,15 @@
     - openssh
     - rsync
     - the_silver_searcher
+    - nftables
   become: yes
 
 - name: enable network time
   service: name=ntpd state=started enabled=yes
+  become: yes
+
+- name: enable firewall
+  service: name=nftables state=started enabled=yes
   become: yes
 
 - name: install shell colorschemes
