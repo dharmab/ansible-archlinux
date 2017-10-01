@@ -65,6 +65,13 @@ sizeof() {
     return 0
 }
 
+# Shortcut to log into OnePass
+op-auth() {
+    if ! op get account &> /dev/null; then
+        eval "$(op signin my)"
+    fi
+}
+
 # Shortcut to update vim plugins
 vim-plugin-update() {
     vim +PluginUpdate +qall
