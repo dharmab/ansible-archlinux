@@ -53,6 +53,9 @@ Plugin 'chase/vim-ansible-yaml'
 " Salt syntax and indentation
 Plugin 'saltstack/salt-vim'
 
+" Go syntax and features
+Plugin 'fatih/vim-go'
+
 " Automatically close parentheses, etc.
 Plugin 'Raimondi/delimitMate'
 
@@ -80,6 +83,9 @@ Plugin 'mileszs/ack.vim'
 
 " Better JSON
 Plugin 'elzr/vim-json'
+
+" Prometheus rules syntax highlighting
+Plugin 'skreuzer/vim-prometheus'
 
 call vundle#end()
 filetype plugin indent on
@@ -141,6 +147,10 @@ nmap <silent> <A-j> :wincmd j<CR>
 nmap <silent> <A-k> :wincmd k<CR>
 nmap <silent> <A-l> :wincmd l<CR>
 
+" Disable some useless commands
+cnoreabbrev X x
+map Q <Nop>
+
 " Airline tweaks
 " Always show statusline
 set laststatus=2
@@ -163,6 +173,7 @@ let g:previm_open_cmd = 'google-chrome-stable'
 
 " YouCompleteMe tweaks
 let g:ycm_python_binary_path='python'
+cnoreabbrev ycm YcmCompleter
 
 " Syntastic Tweaks
 " Display a statusline message if errors are detected
