@@ -55,7 +55,7 @@ echo "export OP_SESSION_my=$OP_SESSION_my" > "$session_file"
 export OP_SESSION_my
 
 # Read item from 1Password
-if ! output=$(op get item "$item_name" | jq '[(.details.fields[] | {(.name): .value})] + ([.details.sections[] | select(.title = "Other Fields").fields[] | {(.n): .v}]) | add'); then
+if ! output=$(op get item "$item_name" | jq '[(.details.fields[] | {(.name): .value})] + ([.details.sections[] | select(.fields != null) |.fields[] | {(.t): .v}]) | add'); then
     exit 1
 fi
 
@@ -66,7 +66,7 @@ if [[ ! -z "$field" ]]; then
 fi
 
 # Pretty-print output
-output=$(echo "$output" | jq -r '.')
+output=$(echo "$output" | jq -rC '.')
 
 # Output to stdout or clipboard
 if [[ "$mode" == "copy" ]]; then
