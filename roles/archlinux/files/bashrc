@@ -31,6 +31,22 @@ if present ruby; then
     export PATH="$GEM_HOME/bin:$PATH"
 fi
 
+# Shortcuts for 1Password CLI
+if present op; then
+    op-auth() {
+        local session_file="$HOME/.op/session"
+        if [[ ! -f "$session_file" ]]; then
+            touch "$session_file"
+            chmod 600 "$session_file"
+        fi
+        source "$session_file"
+        if ! op get account &> /dev/null; then
+            op signin my > "$session_file"
+            source "$session_file"
+        fi
+    }
+fi
+
 # Include a local bin directory
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
 
@@ -63,13 +79,6 @@ sizeof() {
     fi
     du -ch "$1" | grep total
     return 0
-}
-
-# Shortcut to log into OnePass
-op-auth() {
-    if ! op get account &> /dev/null; then
-        eval "$(op signin my)"
-    fi
 }
 
 # Shortcut to update vim plugins
