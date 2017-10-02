@@ -1,9 +1,0 @@
-#!/bin/bash
-search_term="$1"
-field="$2"
-
-if [[ -z "$field" ]]; then
-    field=''
-fi
-
-op get item "$search_term" | jq '[(.details.fields[] | {(.name): .value})] + ([.details.sections[] | select(.title = "Other Fields").fields[] | {(.n): .v}]) | add' | jq -r ".$field"

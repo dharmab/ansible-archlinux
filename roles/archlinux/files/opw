@@ -1,0 +1,81 @@
+#!/bin/bash
+
+usage() {
+    echo "Usage: op [-c|--copy] ITEM [FIELD]" 1>&2
+}
+
+# Parse arguments
+mode="echo"
+positional_arguments=()
+
+while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+        -c|--copy)
+            mode="copy"
+            shift
+            ;;
+        -h|--help)
+            mode="help"
+            shift
+            ;;
+        *)
+            positional_arguments+=("$1")
+            shift
+            ;;
+    esac
+done
+set -- "${positional_arguments[@]}"
+
+if [[ "$mode" == "help" ]]; then
+    usage
+    exit 0
+fi
+
+item_name=${positional_arguments[0]}
+field=${positional_arguments[1]}
+
+if [[ -z "$item_name" ]]; then
+    usage
+    exit 1
+fi
+
+# Authenticate, storing session token on disc for later reuse
+session_file="$HOME/.op/session"
+if [[ ! -f "$session_file" ]]; then
+	touch "$session_file"
+	chmod 600 "$session_file"
+fi
+source "$session_file"
+until op get account &> /dev/null; do
+    OP_SESSION_my="$(op signin my --output=raw)"
+done
+echo "export OP_SESSION_my=$OP_SESSION_my" > "$session_file"
+
+export OP_SESSION_my
+
+# Read item from 1Password
+if ! output=$(op get item "$item_name" | jq '[(.details.fields[] | {(.name): .value})] + ([.details.sections[] | select(.title = "Other Fields").fields[] | {(.n): .v}]) | add'); then
+    exit 1
+fi
+
+if [[ ! -z "$field" ]]; then
+    if ! output=$(echo "$output" | jq  -e '."'"$field"'"'); then
+        exit 1
+    fi
+fi
+
+# Pretty-print output
+output=$(echo "$output" | jq -r '.')
+
+# Output to stdout or clipboard
+if [[ "$mode" == "copy" ]]; then
+    for clipboard in pbcopy xclip; do
+        if type "$clipboard" &> /dev/null; then
+            echo "$output" | "$clipboard"
+            echo "Copied secret to clipboard!"
+        fi
+    done
+else
+    echo "$output"
+fi

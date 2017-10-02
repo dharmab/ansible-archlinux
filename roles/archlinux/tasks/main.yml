@@ -106,6 +106,5 @@
 - name: install utility scripts
   copy: src={{ item }} dest=/home/{{ archlinux_username }}/bin/{{ item }} owner={{ archlinux_username }} group=users mode=755
   with_items:
-    - op-get
-    - op-copy
+    - opw
   become: yes
