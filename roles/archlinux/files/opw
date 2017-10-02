@@ -65,17 +65,14 @@ if [[ ! -z "$field" ]]; then
     fi
 fi
 
-# Pretty-print output
-output=$(echo "$output" | jq -rC '.')
-
 # Output to stdout or clipboard
 if [[ "$mode" == "copy" ]]; then
     for clipboard in pbcopy xclip; do
         if type "$clipboard" &> /dev/null; then
-            echo "$output" | "$clipboard"
+            echo "$output" | jq -r '.' | "$clipboard"
             echo "Copied secret to clipboard!"
         fi
     done
 else
-    echo "$output"
+    echo "$output" | jq -r '.'
 fi
