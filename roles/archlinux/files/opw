@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() {
-    echo "Usage: op [-c|--copy] ITEM [FIELD]" 1>&2
+    echo "Usage: opw [-c|--copy] ITEM [FIELD]" 1>&2
 }
 
 # Parse arguments
@@ -40,24 +40,26 @@ if [[ -z "$item_name" ]]; then
     exit 1
 fi
 
-# Authenticate, storing session token on disc for later reuse
 session_file="$HOME/.op/session"
 if [[ ! -f "$session_file" ]]; then
 	touch "$session_file"
 	chmod 600 "$session_file"
 fi
 source "$session_file"
-until op get account &> /dev/null; do
+tries=1
+until output=$(op get item "$item_name" | jq '[(.details.fields[] | {(.name): .value})] + ([.details.sections[] | select(.fields != null) |.fields[] | {(.t): .v}]) | add'); do
     OP_SESSION_my="$(op signin my --output=raw)"
+    tries=$((tries+1))
+    if [[ "$tries" -gt 3 ]]; then
+        echo "Max tries exceeded"
+        exit 1
+    fi;
 done
 echo "export OP_SESSION_my=$OP_SESSION_my" > "$session_file"
 
 export OP_SESSION_my
 
 # Read item from 1Password
-if ! output=$(op get item "$item_name" | jq '[(.details.fields[] | {(.name): .value})] + ([.details.sections[] | select(.fields != null) |.fields[] | {(.t): .v}]) | add'); then
-    exit 1
-fi
 
 if [[ ! -z "$field" ]]; then
     if ! output=$(echo "$output" | jq  -e '."'"$field"'"'); then
