@@ -40,6 +40,7 @@ if [[ -z "$item_name" ]]; then
     exit 1
 fi
 
+# Read from OnePassword, authenticating if necessary
 session_file="$HOME/.op/session"
 if [[ ! -f "$session_file" ]]; then
 	touch "$session_file"
@@ -47,7 +48,7 @@ if [[ ! -f "$session_file" ]]; then
 fi
 source "$session_file"
 tries=1
-until output=$(op get item "$item_name" | jq '[(.details.fields[] | {(.name): .value})] + ([.details.sections[] | select(.fields != null) |.fields[] | {(.t): .v}]) | add'); do
+until item=$(op get item "$item_name"); do
     OP_SESSION_my="$(op signin my --output=raw)"
     tries=$((tries+1))
     if [[ "$tries" -gt 3 ]]; then
@@ -56,11 +57,10 @@ until output=$(op get item "$item_name" | jq '[(.details.fields[] | {(.name): .v
     fi;
 done
 echo "export OP_SESSION_my=$OP_SESSION_my" > "$session_file"
-
 export OP_SESSION_my
 
-# Read item from 1Password
-
+# Parse output from OnePassword
+output=$(echo "$item" | jq -e '[(.details.fields[] | {(.name): .value})] + ([.details.sections[] | select(.fields != null) |.fields[] | {(.t): .v}]) | add')
 if [[ ! -z "$field" ]]; then
     if ! output=$(echo "$output" | jq  -e '."'"$field"'"'); then
         exit 1
