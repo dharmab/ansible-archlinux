@@ -21,7 +21,7 @@ pacman -Syu ansible
 Run the playbook:
 
 ```
-ansible-playbook --ask-sudo-pass site.yml
+ansible-playbook --ask-become-pass site.yml
 ```
 
 Answer the prompts and watch it go.
