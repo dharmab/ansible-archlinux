@@ -1,16 +1,16 @@
 ---
-- include: pacman.yml
-- include: user.yml
-- include: virtualization.yml
-- include: git.yml
-- include: c-family.yml
-- include: java.yml
-- include: python.yml
-- include: ruby.yml
-- include: golang.yml
-- include: vim.yml
-- include: i3.yml
-- include: wallpaper.yml
+- import_tasks: pacman.yml
+- import_tasks: user.yml
+- import_tasks: virtualization.yml
+- import_tasks: git.yml
+- import_tasks: c-family.yml
+- import_tasks: java.yml
+- import_tasks: python.yml
+- import_tasks: ruby.yml
+- import_tasks: golang.yml
+- import_tasks: vim.yml
+- import_tasks: i3.yml
+- import_tasks: wallpaper.yml
 
 - name: install utilities
   pacman: name={{ item }} state=present
