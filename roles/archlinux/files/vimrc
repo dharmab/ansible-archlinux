@@ -169,7 +169,7 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:multi_cursor_prev_key='<C-b>'
 
 " Command to open browser for Markdown Preview
-let g:previm_open_cmd = 'google-chrome-stable'
+let g:previm_open_cmd = 'firefox'
 
 " YouCompleteMe tweaks
 let g:ycm_python_binary_path='python'

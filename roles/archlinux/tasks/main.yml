@@ -86,13 +86,14 @@
 - name: install applications
   pacman: name={{ item }} state=present
   with_items:
-    - xterm
-    - pcmanfm
     - evince
+    - firefox
     - gimp
     - krita
+    - pcmanfm
     - viewnior
     - vlc
+    - xterm
   become: yes
 
 - name: create AUR build directory
