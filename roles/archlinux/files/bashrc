@@ -26,7 +26,7 @@ fi
 
 # Install and run ruby gems in home directory
 if present ruby; then
-    GEM_HOME="$(ruby -rubygems -e 'puts Gem.user_dir')"
+    GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
     export GEM_HOME
     export PATH="$GEM_HOME/bin:$PATH"
 fi
