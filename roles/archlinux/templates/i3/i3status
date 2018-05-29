@@ -12,7 +12,7 @@ order += "battery 0"
 battery 0 {
     format = "BAT: %status (%percentage)"
     format_down = "BAT: N/A"
-    path = "/sys/class/power_supply/BAT/uevent"
+    path = "/sys/class/power_supply/BAT0/uevent"
     low_threshold = 15
 }
 
