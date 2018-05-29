@@ -6,6 +6,7 @@
     - i3lock
     - i3status
     - dmenu
+  become: yes
 
 - name: create i3 configuration directory
   file: name=/home/{{ archlinux_username }}/.i3 state=directory owner={{ archlinux_username }} group=users
