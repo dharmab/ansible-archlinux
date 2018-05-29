@@ -3,6 +3,10 @@
   pacman: update_cache=yes
   become: yes
 
+- name: install pacman tools
+  pacman: name=pacman-contrib state=present
+  become: yes
+
 - name: install reflector
   pacman: name=reflector state=present
   become: yes
