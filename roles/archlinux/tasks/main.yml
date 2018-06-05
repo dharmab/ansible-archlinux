@@ -104,8 +104,7 @@
   file: name=/home/{{ archlinux_username }}/bin state=directory owner={{ archlinux_username }} group=users
   become: yes
 
-- name: install utility scripts
-  copy: src={{ item }} dest=/home/{{ archlinux_username }}/bin/{{ item }} owner={{ archlinux_username }} group=users mode=755
-  with_items:
-    - opw
+- name: configure direnv
+  copy: src=direnvrc dest=/home/{{ archlinux_username }}/.direnvrc owner={{ archlinux_username }} group=users
   become: yes
+  become_user: "{{ archlinux_username }}"
