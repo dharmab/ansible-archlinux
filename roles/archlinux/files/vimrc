@@ -121,10 +121,6 @@ set colorcolumn=80,120
 " Allow mouse
 set mouse=a
 
-" Spell check
-set spell
-set spellsuggest=best,10
-
 " Wrap searches
 set wrapscan
 
