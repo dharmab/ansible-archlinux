@@ -75,15 +75,15 @@ vim-plugin-update() {
 # Set prompt
 bash_prompt() {
     # foreground colors
-    local COLOR_NONE="\[\033[0m\]"
+    local COLOR_NONE="\\[\\033[0m\\]"
 
     # regular colors
-    local COLOR_RED="\[\033[0;31m\]"
-    local COLOR_BLUE="\[\033[0;34m\]"
-    local COLOR_WHITE="\[\033[0;37m\]"
+    local COLOR_RED="\\[\\033[0;31m\\]"
+    local COLOR_BLUE="\\[\\033[0;34m\\]"
+    local COLOR_WHITE="\\[\\033[0;37m\\]"
 
     # USA USA USA
-    PS1="${COLOR_RED}[${COLOR_WHITE}\u@\h ${COLOR_BLUE}\W${COLOR_RED}]${COLOR_WHITE}\\$ ${COLOR_NONE}"
+    PS1="${COLOR_RED}[${COLOR_WHITE}\\u@\\h ${COLOR_BLUE}\\W${COLOR_RED}]${COLOR_WHITE}\\\\$ ${COLOR_NONE}"
 }
 
 bash_prompt
