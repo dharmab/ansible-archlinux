@@ -16,10 +16,10 @@ Plugin 'gmarik/Vundle.vim'
 " Base16 colorscheme
 Plugin 'chriskempson/base16-vim'
 
-" Syntastic syntax checking
-" Install developer tools for syntax checking
+" Syntax checking
+" Install developer tools for syntax checking: https://github.com/w0rp/ale#supported-languages
 " Install flake8 for Python PEP8
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 
 " YouCompleteMe completions
 Plugin 'Valloric/YouCompleteMe'
@@ -175,23 +175,11 @@ let g:previm_open_cmd = 'firefox'
 let g:ycm_python_binary_path='python'
 cnoreabbrev ycm YcmCompleter
 
-" Syntastic Tweaks
-" Display a statusline message if errors are detected
-let g:syntastic_stl_format = '%E{Errors: %e}%B{,}%W{Warnings: %w}'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-" Automatically populate the list of error -> line number mappings
-" (Disabled by default for compatibility)
-let g:syntastic_always_populate_loc_list = 1
-" Check files when they are opened
-let g:syntastic_check_on_open = 1
-" Don't check files when they are closed
-let g:syntastic_check_on_wq = 0
+" ALE tweaks
 " Don't check for long lines in Python files
-let g:syntastic_python_flake8_args='--ignore=E501'
+let g:ale_python_flake8_options='--ignore=E501'
 " Don't check for non-constant source in Shell files
-let g:syntastic_sh_shellcheck_args='--exclude SC1090'
+let g:ale_sh_shellcheck_options='--exclude SC1090'
 
 " GitGutter tweaks
 " Display diff markers between index and HEAD
@@ -214,3 +202,6 @@ highlight jsonString ctermfg=Yellow
 highlight jsonNumber ctermfg=Red
 highlight jsonBoolean ctermfg=Red
 highlight jsonNull ctermfg=Red
+
+" Disable cursorline in shell scripts (performance)
+au Filetype sh set nocursorline
