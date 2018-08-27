@@ -151,6 +151,3 @@ bar {
 
 # Set the wallpaper using feh
 exec /usr/bin/sh /home/{{ archlinux_username }}/.fehbg &
-
-# Ensure pulseaudio starts (workaround for Fiio E7 USB DAC)
-exec /usr/bin/pulseaudio --start
