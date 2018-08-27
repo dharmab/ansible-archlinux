@@ -5,90 +5,87 @@ set nocompatible
 nnoremap <SPACE> <Nop>
 let mapleader="\<Space>"
 
-" BEGIN VUNDLE CONFIG
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" BEGIN VIM-PLUG CONFIG
+call plug#begin('~/.vim/plugged')
 
 " Vundle, a plugin manager for vim
-Plugin 'gmarik/Vundle.vim'
+Plug 'gmarik/Vundle.vim'
 
 " Base16 colorscheme
-Plugin 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 
 " Syntax checking
 " Install developer tools for syntax checking: https://github.com/w0rp/ale#supported-languages
 " Install flake8 for Python PEP8
-Plugin 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " YouCompleteMe completions
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --sysem-libclang --clang-completer'}
 " If YCM is unavailable for your platform, try SuperTab instead
 "Plugin 'ervandew/supertab'
 
 " File tree
 " Use :NERDTree to open the tree
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " Sublime Text style multiple cursors
 " Use Ctrl+n to highlight matches and Ctrl+b to undo highlight
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 
 " Fancy statusbar
 " Powerline fonts recommended
-Plugin 'bling/vim-airline'
-Plugin 'bling/vim-bufferline'
+Plug 'bling/vim-airline'
+Plug 'bling/vim-bufferline'
 
 " Git integration
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " CtrlP fuzzy search
 " Use Ctrl+P to search a project for a file
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Ansible syntax and indentation
-Plugin 'chase/vim-ansible-yaml'
+Plug 'chase/vim-ansible-yaml'
 
 " Salt syntax and indentation
-Plugin 'saltstack/salt-vim'
+Plug 'saltstack/salt-vim'
 
 " Go syntax and features
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
 " Automatically close parentheses, etc.
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 
 " Hotkeys for commenting/uncommenting
 " g-c-c to toggle a line, g-c-Motion to toggle a motion
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
 " Markdown Preview
 " Use :PrevimOpen while editing Markdown to open a live preview
-Plugin 'kannokanno/previm'
+Plug 'kannokanno/previm'
 
 " Highlight trailing whitespace
 " Use :StripWhitespace to remove trailing shitespace
-Plugin 'ntpeters/vim-better-whitespace'
+Plug 'ntpeters/vim-better-whitespace'
 
 " Jump around Vimium-style
 " Use Leader-Leader-Motion <target> to jump around
-Plugin 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 
 " Automatically detect indentation settings
-Plugin 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth'
 
 " Ack/Ag search
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 
 " Better JSON
-Plugin 'elzr/vim-json'
+Plug 'elzr/vim-json'
 
 " Prometheus rules syntax highlighting
-Plugin 'skreuzer/vim-prometheus'
+Plug 'skreuzer/vim-prometheus'
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 " END VUNDLE CONFIG
 
 " Allow the use of project-specific vimrc

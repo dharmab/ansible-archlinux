@@ -80,7 +80,6 @@
     - alsa-utils
     - pulseaudio
     - pulseaudio-alsa
-    - paprefs
     - pavucontrol
 
 - name: install applications

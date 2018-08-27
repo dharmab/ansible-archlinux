@@ -68,8 +68,7 @@ sizeof() {
 
 # Shortcut to update vim plugins
 vim-plugin-update() {
-    vim +PluginUpdate +qall
-    "$HOME/.vim/bundle/YouCompleteMe/install.py" --clang-completer --gocode-completer
+    vim +PluginUpdate +qall!
 }
 
 # Set prompt
