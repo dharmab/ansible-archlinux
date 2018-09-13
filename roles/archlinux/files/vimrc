@@ -8,9 +8,6 @@ let mapleader="\<Space>"
 " BEGIN VIM-PLUG CONFIG
 call plug#begin('~/.vim/plugged')
 
-" Vundle, a plugin manager for vim
-Plug 'gmarik/Vundle.vim'
-
 " Base16 colorscheme
 Plug 'chriskempson/base16-vim'
 
