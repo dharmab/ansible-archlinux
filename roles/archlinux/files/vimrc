@@ -17,7 +17,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'w0rp/ale'
 
 " YouCompleteMe completions
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --sysem-libclang --clang-completer'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --system-libclang --clang-completer'}
 " If YCM is unavailable for your platform, try SuperTab instead
 "Plugin 'ervandew/supertab'
 
