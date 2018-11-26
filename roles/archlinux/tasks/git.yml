@@ -26,10 +26,12 @@
 - name: configure global gitignore
   lineinfile: path=/home/{{ archlinux_username }}/.gitignore line={{ item }}
   with_items:
-    - "*.swp"
     - "*.swo"
-    - ".envrc"
+    - "*.swp"
+    - ".DS_store"
     - ".direnv/"
+    - ".envrc"
     - ".vagrant.d/"
+    - ".ycm_extra_conf.py"
   become: yes
   become_user: "{{ archlinux_username }}"

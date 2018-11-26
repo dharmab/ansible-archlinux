@@ -17,10 +17,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'w0rp/ale'
 
 " YouCompleteMe completions
-" Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer --go-completer'}
-" You can also try TabNine (https://tabnine.com), which is a freemium
-" completer which can complete entire statements and has better indexing
-Plug 'zxqfl/tabnine'
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer --go-completer'}
 
 " File tree
 " Use :NERDTree to open the tree
@@ -74,7 +71,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-sleuth'
 
 " Ripgrep code search
-Plug 'burntsushi/ripgrep'
+Plug 'jremmen/vim-ripgrep'
 
 " Better JSON
 Plug 'elzr/vim-json'
