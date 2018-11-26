@@ -17,9 +17,10 @@ Plug 'chriskempson/base16-vim'
 Plug 'w0rp/ale'
 
 " YouCompleteMe completions
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --system-libclang --clang-completer'}
-" If YCM is unavailable for your platform, try SuperTab instead
-"Plugin 'ervandew/supertab'
+" Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer --go-completer'}
+" You can also try TabNine (https://tabnine.com), which is a freemium
+" completer which can complete entire statements and has better indexing
+Plug 'zxqfl/tabnine'
 
 " File tree
 " Use :NERDTree to open the tree
@@ -36,7 +37,6 @@ Plug 'bling/vim-bufferline'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
 
 " CtrlP fuzzy search
 " Use Ctrl+P to search a project for a file
@@ -45,18 +45,18 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Ansible syntax and indentation
 Plug 'chase/vim-ansible-yaml'
 
-" Salt syntax and indentation
-Plug 'saltstack/salt-vim'
-
 " Go syntax and features
 Plug 'fatih/vim-go'
+
+" Generic log file syntax
+Plug 'dzeban/vim-log-syntax'
 
 " Automatically close parentheses, etc.
 Plug 'Raimondi/delimitMate'
 
-" Hotkeys for commenting/uncommenting
-" g-c-c to toggle a line, g-c-Motion to toggle a motion
-Plug 'tpope/vim-commentary'
+" Generqal comment managemnt
+" <leader>c<space> to toggle comments
+Plug 'scrooloose/nerdcommenter'
 
 " Markdown Preview
 " Use :PrevimOpen while editing Markdown to open a live preview
@@ -73,16 +73,20 @@ Plug 'easymotion/vim-easymotion'
 " Automatically detect indentation settings
 Plug 'tpope/vim-sleuth'
 
-" Ack/Ag search
-Plug 'mileszs/ack.vim'
+" Ripgrep code search
+Plug 'burntsushi/ripgrep'
 
 " Better JSON
 Plug 'elzr/vim-json'
+
+" Jsonnet
+Plug 'google/vim-jsonnet'
 
 " Prometheus rules syntax highlighting
 Plug 'skreuzer/vim-prometheus'
 
 call plug#end()
+filetype plugin indent on
 " END VUNDLE CONFIG
 
 " Allow the use of project-specific vimrc
@@ -137,6 +141,9 @@ nmap <silent> <A-j> :wincmd j<CR>
 nmap <silent> <A-k> :wincmd k<CR>
 nmap <silent> <A-l> :wincmd l<CR>
 
+" Use Ctrl+c to copy selection to clipboard
+vmap <C-c> "*y
+
 " Disable some useless commands
 cnoreabbrev X x
 map Q <Nop>
@@ -170,20 +177,12 @@ cnoreabbrev ycm YcmCompleter
 let g:ale_python_flake8_options='--ignore=E501'
 " Don't check for non-constant source in Shell files
 let g:ale_sh_shellcheck_options='--exclude SC1090'
-
-" GitGutter tweaks
-" Display diff markers between index and HEAD
-let g:gitgutter_diff_args = ' HEAD '
-
-" If using SuperTab instead of YCM, list completions top-to-bottom
-let g:SuperTabDefaultCompletionType = "<c-n>"
-
-" Ack.vim tweaks
-" Use Ag if available
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-    cnoreabbrev Ag Ack
-endif
+" Tweak appearance
+let g:ale_sign_error = '!!'
+let g:ale_sign_warning = '--'
+let g:ale_echo_msg_warning_str = 'Warning'
+let g:ale_echo_msg_error_str = 'Error'
+let g:ale_echo_msg_format = '%severity%: %s (%linter% %code%)'
 
 " JSON tweaks
 " High contrast colors (dark theme assumed)
@@ -195,3 +194,7 @@ highlight jsonNull ctermfg=Red
 
 " Disable cursorline in shell scripts (performance)
 au Filetype sh set nocursorline
+
+" Fix backspace on macOS
+set backspace=eol,indent,start
+

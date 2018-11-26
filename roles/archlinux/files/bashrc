@@ -68,7 +68,7 @@ sizeof() {
 
 # Shortcut to update vim plugins
 vim-plugin-update() {
-    vim +PluginUpdate +qall!
+    vim +PlugUpdate +qall!
 }
 
 # Set prompt
