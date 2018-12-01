@@ -15,7 +15,7 @@ Before running the playbook, perform a full upgrade and resolve any necessary ma
 Install Ansible from the official repositories:
 
 ```bash
-pacman -Syu ansible
+pacman -Syu python ansible
 ```
 
 Run the playbook:
