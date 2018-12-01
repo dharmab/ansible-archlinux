@@ -1,8 +1,8 @@
 ---
 - name: install virtualization tools
-  pacman: name={{ item }}
-  with_items:
-    - vagrant
-    - virtualbox
-    - virtualbox-host-modules-arch
+  pacman:
+    name:
+      - vagrant
+      - virtualbox
+      - virtualbox-host-modules-arch
   become: yes

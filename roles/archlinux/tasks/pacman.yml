@@ -4,11 +4,13 @@
   become: yes
 
 - name: install pacman tools
-  pacman: name=pacman-contrib state=present
+  pacman:
+    name: pacman-contrib
   become: yes
 
 - name: install reflector
-  pacman: name=reflector state=present
+  pacman: 
+    name: reflector
   become: yes
 
 - name: check if mirrorlist was recently updated

@@ -1,6 +1,7 @@
 ---
 - name: install feh
-  pacman: name=feh
+  pacman: 
+    name: feh
   become: yes
 
 - name: configure wallpaper script

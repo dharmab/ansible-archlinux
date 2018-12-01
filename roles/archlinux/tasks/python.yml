@@ -1,11 +1,11 @@
 ---
 - name: install python development tools
-  pacman: name={{ item }}
-  with_items:
-    - python2
-    - python2-pip
-    - python
-    - python-pip
+  pacman:
+    name:
+      - python2
+      - python2-pip
+      - python
+      - python-pip
   become: yes
 
 - name: install flake8 for python 2

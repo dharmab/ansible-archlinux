@@ -13,22 +13,22 @@
 - import_tasks: wallpaper.yml
 
 - name: install utilities
-  pacman: name={{ item }} state=present
-  with_items:
-    - alsa-utils
-    - aria2
-    - curl
-    - htop
-    - httpie
-    - jq
-    - nftables
-    - nmap
-    - ntp
-    - openssh
-    - openvpn
-    - ripgrep
-    - rsync
-    - shellcheck
+  pacman:
+    name:
+      - alsa-utils
+      - aria2
+      - curl
+      - htop
+      - httpie
+      - jq
+      - nftables
+      - nmap
+      - ntp
+      - openssh
+      - openvpn
+      - ripgrep
+      - rsync
+      - shellcheck
   become: yes
 
 - name: enable network time
@@ -45,24 +45,25 @@
   become_user: "{{ archlinux_username }}"
 
 - name: install fonts
-  pacman: name={{ item }} state=present
-  with_items:
-    - adobe-source-code-pro-fonts
-    - ttf-dejavu
-    - ttf-droid
-    - ttf-inconsolata
-    - ttf-liberation
+  pacman:
+    name:
+      - adobe-source-code-pro-fonts
+      - powerline-fonts
+      - ttf-dejavu
+      - ttf-droid
+      - ttf-inconsolata
+      - ttf-liberation
   become: yes
 
 - name: install GUI
-  pacman: name={{ item }} state=present
-  with_items:
-    - arandr
-    - elementary-icon-theme
-    - lightdm
-    - lightdm-gtk-greeter
-    - lxappearance
-    - xcursor-simpleandsoft
+  pacman:
+    name:
+      - arandr
+      - elementary-icon-theme
+      - lightdm
+      - lightdm-gtk-greeter
+      - lxappearance
+      - xcursor-simpleandsoft
   become: yes
 
 - name: enable GUI on boot
@@ -78,23 +79,23 @@
   become: yes
 
 - name: install pulseaudio/alsa
-  pacman: name={{ item }} state=present
-  with_items:
-    - alsa-utils
-    - pavucontrol
-    - pulseaudio
-    - pulseaudio-alsa
+  pacman:
+    name:
+      - alsa-utils
+      - pavucontrol
+      - pulseaudio
+      - pulseaudio-alsa
 
 - name: install applications
-  pacman: name={{ item }} state=present
-  with_items:
-    - evince
-    - firefox
-    - gimp
-    - mpv
-    - pcmanfm
-    - viewnior
-    - xterm
+  pacman:
+    name:
+      - evince
+      - firefox
+      - gimp
+      - mpv
+      - pcmanfm
+      - viewnior
+      - xterm
   become: yes
 
 - name: create AUR build directory

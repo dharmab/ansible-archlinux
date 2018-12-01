@@ -1,4 +1,5 @@
 ---
 - name: install ruby
-  pacman: name=ruby
+  pacman:
+    name: ruby
   become: yes

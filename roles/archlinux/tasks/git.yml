@@ -1,6 +1,7 @@
 ---
 - name: install git
-  pacman: name=git
+  pacman: 
+    name: git
   become: yes
 
 - name: configure git name

@@ -1,11 +1,11 @@
 - name: install i3
-  pacman: name={{ item }}
-  with_items:
-    - xorg
-    - i3-wm
-    - i3lock
-    - i3status
-    - dmenu
+  pacman:
+    name:
+      - xorg
+      - i3-wm
+      - i3lock
+      - i3status
+      - dmenu
   become: yes
 
 - name: create i3 configuration directory

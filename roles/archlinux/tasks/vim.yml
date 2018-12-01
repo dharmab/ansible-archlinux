@@ -1,11 +1,15 @@
 ---
 - name: remove vim minimal package
-  pacman: name=vim state=absent force=true
+  pacman:
+   name: vim
+   state: absent
+   force: true
   become: yes
   ignore_errors: yes
 
 - name: install vim
-  pacman: name=gvim
+  pacman:
+    name: gvim
   become: yes
 
 - name: create vim autoload directory
@@ -38,7 +42,3 @@
   command: "/usr/bin/vim +PlugUpgrade +qall!"
   become: yes
   become_user: "{{ archlinux_username }}"
-
-- name: install powerline fonts
-  pacman: name=powerline-fonts
-  become: yes
