@@ -2,7 +2,7 @@
 - name: install java development tools
   pacman: name={{ item }}
   with_items:
-    - jdk8-openjdk
-    - openjdk8-doc
-    - openjdk8-src
+    - jdk-openjdk
+    - openjdk-doc
+    - openjdk-src
     - maven
