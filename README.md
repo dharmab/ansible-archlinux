@@ -30,8 +30,6 @@ You will have to set the non-root user's password and sudo privileges manually u
 
 ## Customization
 
-You can select a colorscheme for the shell and Vim by typing on of the commands starting with `base16_`.
+You can select a colorscheme for the shell and Vim by typing one of the commands starting with `base16_`.
 
 You can place an image file at "~/.wallpaper", and it will automatically be set as the desktop background at login. 
-
-YouCompleteMe for Vim will be installed with the default completers. To enable the Clang and Go semantic completers, run `vim-plugin-update`.
