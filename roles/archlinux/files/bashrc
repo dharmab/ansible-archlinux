@@ -31,7 +31,6 @@ if present ruby; then
     export PATH="$GEM_HOME/bin:$PATH"
 fi
 
-
 # Include a local bin directory
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
 
@@ -64,11 +63,6 @@ sizeof() {
     fi
     du -ch "$1" | grep total
     return 0
-}
-
-# Shortcut to update vim plugins
-vim-plugin-update() {
-    vim +PlugUpdate +qall!
 }
 
 # Set prompt
