@@ -9,10 +9,14 @@
   become: yes
 
 - name: install flake8 for python 2
-  pip: name=flake8 executable=pip2
+  pip:
+    name: flake8
+    executable: pip2
   become: yes
 
 - name: install flake8 for python 3
-  pip: name=flake8 state=present
+  pip:
+    name: flake8
+    state: present
   become: yes
 
