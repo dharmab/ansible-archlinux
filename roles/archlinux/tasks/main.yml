@@ -32,15 +32,23 @@
   become: yes
 
 - name: enable network time
-  service: name=ntpd state=started enabled=yes
+  service:
+    name: ntpd
+    state: started
+    enabled: yes
   become: yes
 
 - name: enable firewall
-  service: name=nftables state=started enabled=yes
+  service:
+    name: nftables
+    state: started
+    enabled: yes
   become: yes
 
 - name: install shell colorschemes
-  git: repo=https://github.com/chriskempson/base16-shell.git dest=/home/{{ archlinux_username }}/.config/base16-shell
+  git:
+    repo: "https://github.com/chriskempson/base16-shell.git"
+    dest: /home/{{ archlinux_username }}/.config/base16-shell
   become: yes
   become_user: "{{ archlinux_username }}"
 
@@ -67,15 +75,25 @@
   become: yes
 
 - name: enable GUI on boot
-  service: name=lightdm enabled=yes
+  service:
+    name: lightdm
+    enabled: yes
   become: yes
 
 - name: template .bashrc
+  copy:
+    src: bashrc
+    dest: /home/{{ archlinux_username}}/.bashrc
+    owner: {{ archlinux_username }}
+    group: users
   become: yes
-  copy: src=bashrc dest=/home/{{ archlinux_username}}/.bashrc owner={{ archlinux_username }} group=users
 
 - name: template Xresources
-  copy: src=Xresources dest=/home/{{ archlinux_username }}/.Xresources owner={{ archlinux_username }} group=users
+  copy:
+    src: Xresources
+    dest: /home/{{ archlinux_username }}/.Xresources
+    owner: {{ archlinux_username }}
+    group: users
   become: yes
 
 - name: install pulseaudio/alsa
@@ -99,14 +117,26 @@
   become: yes
 
 - name: create AUR build directory
-  file: name=/home/{{ archlinux_username }}/build state=directory owner={{ archlinux_username }} group=users
+  file:
+    name: /home/{{ archlinux_username }}/build
+    state: directory
+    owner: {{ archlinux_username }}
+    group: users
   become: yes
 
 - name: create scripts directory
-  file: name=/home/{{ archlinux_username }}/bin state=directory owner={{ archlinux_username }} group=users
+  file:
+    name: /home/{{ archlinux_username }}/bin
+    state: directory
+    owner: {{ archlinux_username }}
+    group: users
   become: yes
 
 - name: configure direnv
-  copy: src=direnvrc dest=/home/{{ archlinux_username }}/.direnvrc owner={{ archlinux_username }} group=users
+  copy:
+    src: direnvrc
+    dest: /home/{{ archlinux_username }}/.direnvrc
+    owner: {{ archlinux_username }}
+    group: users
   become: yes
   become_user: "{{ archlinux_username }}"
