@@ -1,5 +1,5 @@
 #!/bin/bash
 wallpaper="/home/{{ archlinux_username }}/.wallpaper"
 if [ -f "${wallpaper}" ]; then
-    feh  --bg-max "${wallpaper}"
+    feh --bg-fill "${wallpaper}"
 fi
