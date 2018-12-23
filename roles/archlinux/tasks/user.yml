@@ -1,4 +1,8 @@
 ---
 - name: create normal user
-  user: name={{ archlinux_username }} createhome=yes group=users groups=wheel
+  user:
+    name: "{{ archlinux_username }}"
+    createhome: yes
+    group: users
+    groups: wheel
   become: yes

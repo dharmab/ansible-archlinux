@@ -9,7 +9,7 @@
   become: yes
 
 - name: install reflector
-  pacman: 
+  pacman:
     name: reflector
   become: yes
 
@@ -17,7 +17,8 @@
   # This is simpler with find in Ansible 2.0 and should be changed when that is
   # release is available in Arch
   # find: paths="/etc/pacman.d/mirrorlist" age=1d
-  stat: path="/etc/pacman.d/mirrorlist"
+  stat:
+    path: "/etc/pacman.d/mirrorlist"
   register: mirrorlist_age
 
 - name: update pacman mirrorlist
@@ -25,10 +26,8 @@
   become: yes
   when: "mirrorlist_age.stat.mtime < ansible_date_time.epoch|int - (60 * 60 * 24)"
 
-- name: update pacman package lists
-  command: /usr/bin/pacman -Syy --noconfirm
-  become: yes
-
 - name: perform full upgrade
-  command: /usr/bin/pacman -Su --noconfirm
+  pacman:
+    upgrade: yes
+    update_cache: yes
   become: yes
