@@ -107,6 +107,9 @@ set tabstop=4
 " Show line numbers
 set number
 
+" Fix backspace on macOS
+set backspace=indent,eol,start
+
 " Highlight current line
 set cursorline
 

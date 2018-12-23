@@ -49,6 +49,7 @@
   git:
     repo: "https://github.com/chriskempson/base16-shell.git"
     dest: /home/{{ archlinux_username }}/.config/base16-shell
+    version: master
   become: yes
   become_user: "{{ archlinux_username }}"
 
@@ -84,7 +85,7 @@
   copy:
     src: bashrc
     dest: /home/{{ archlinux_username}}/.bashrc
-    owner: {{ archlinux_username }}
+    owner: "{{ archlinux_username }}"
     group: users
   become: yes
 
@@ -92,7 +93,7 @@
   copy:
     src: Xresources
     dest: /home/{{ archlinux_username }}/.Xresources
-    owner: {{ archlinux_username }}
+    owner: "{{ archlinux_username }}"
     group: users
   become: yes
 
@@ -120,7 +121,7 @@
   file:
     name: /home/{{ archlinux_username }}/build
     state: directory
-    owner: {{ archlinux_username }}
+    owner: "{{ archlinux_username }}"
     group: users
   become: yes
 
@@ -128,7 +129,7 @@
   file:
     name: /home/{{ archlinux_username }}/bin
     state: directory
-    owner: {{ archlinux_username }}
+    owner: "{{ archlinux_username }}"
     group: users
   become: yes
 
@@ -136,7 +137,7 @@
   copy:
     src: direnvrc
     dest: /home/{{ archlinux_username }}/.direnvrc
-    owner: {{ archlinux_username }}
+    owner: "{{ archlinux_username }}"
     group: users
   become: yes
   become_user: "{{ archlinux_username }}"
