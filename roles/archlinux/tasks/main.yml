@@ -29,28 +29,28 @@
       - ripgrep
       - rsync
       - shellcheck
-  become: yes
+  become: true
 
 - name: enable network time
   service:
     name: ntpd
     state: started
-    enabled: yes
-  become: yes
+    enabled: true
+  become: true
 
 - name: enable firewall
   service:
     name: nftables
     state: started
-    enabled: yes
-  become: yes
+    enabled: true
+  become: true
 
 - name: install shell colorschemes
   git:
     repo: "https://github.com/chriskempson/base16-shell.git"
     dest: /home/{{ archlinux_username }}/.config/base16-shell
     version: master
-  become: yes
+  become: true
   become_user: "{{ archlinux_username }}"
 
 - name: install fonts
@@ -62,7 +62,7 @@
       - ttf-droid
       - ttf-inconsolata
       - ttf-liberation
-  become: yes
+  become: true
 
 - name: install GUI
   pacman:
@@ -73,13 +73,13 @@
       - lightdm-gtk-greeter
       - lxappearance
       - xcursor-simpleandsoft
-  become: yes
+  become: true
 
 - name: enable GUI on boot
   service:
     name: lightdm
-    enabled: yes
-  become: yes
+    enabled: true
+  become: true
 
 - name: template .bashrc
   copy:
@@ -87,7 +87,7 @@
     dest: /home/{{ archlinux_username}}/.bashrc
     owner: "{{ archlinux_username }}"
     group: users
-  become: yes
+  become: true
 
 - name: template Xresources
   copy:
@@ -95,7 +95,7 @@
     dest: /home/{{ archlinux_username }}/.Xresources
     owner: "{{ archlinux_username }}"
     group: users
-  become: yes
+  become: true
 
 - name: install pulseaudio/alsa
   pacman:
@@ -115,7 +115,7 @@
       - pcmanfm
       - viewnior
       - xterm
-  become: yes
+  become: true
 
 - name: create AUR build directory
   file:
@@ -123,7 +123,7 @@
     state: directory
     owner: "{{ archlinux_username }}"
     group: users
-  become: yes
+  become: true
 
 - name: create scripts directory
   file:
@@ -131,7 +131,7 @@
     state: directory
     owner: "{{ archlinux_username }}"
     group: users
-  become: yes
+  become: true
 
 - name: configure direnv
   copy:
@@ -139,5 +139,5 @@
     dest: /home/{{ archlinux_username }}/.direnvrc
     owner: "{{ archlinux_username }}"
     group: users
-  become: yes
+  become: true
   become_user: "{{ archlinux_username }}"

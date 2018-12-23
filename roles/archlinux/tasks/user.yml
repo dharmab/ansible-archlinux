@@ -2,7 +2,7 @@
 - name: create normal user
   user:
     name: "{{ archlinux_username }}"
-    createhome: yes
+    createhome: true
     group: users
     groups: wheel
-  become: yes
+  become: true

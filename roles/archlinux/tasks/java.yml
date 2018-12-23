@@ -6,4 +6,4 @@
       - openjdk-doc
       - openjdk-src
       - maven
-  become: yes
+  become: true

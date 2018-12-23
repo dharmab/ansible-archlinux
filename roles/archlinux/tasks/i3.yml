@@ -6,7 +6,7 @@
       - i3lock
       - i3status
       - dmenu
-  become: yes
+  become: true
 
 - name: create i3 configuration directory
   file:
@@ -14,7 +14,7 @@
     state: directory
     owner: {{ archlinux_username }}
     group: users
-  become: yes
+  become: true
 
 - name: template i3 configuration
   template:
@@ -22,7 +22,7 @@
     dest: /home/{{ archlinux_username }}/.i3/config
     owner: {{ archlinux_username }}
     group: users
-  become: yes
+  become: true
 
 - name: template i3status configuration
   template:
@@ -30,4 +30,4 @@
     dest: /home/{{ archlinux_username }}/.i3/i3status
     owner: {{ archlinux_username }}
     group: users
-  become: yes
+  become: true

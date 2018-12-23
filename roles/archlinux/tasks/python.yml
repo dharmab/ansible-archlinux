@@ -6,17 +6,16 @@
       - python2-pip
       - python
       - python-pip
-  become: yes
+  become: true
 
 - name: install flake8 for python 2
   pip:
     name: flake8
     executable: pip2
-  become: yes
+  become: true
 
 - name: install flake8 for python 3
   pip:
     name: flake8
     state: present
-  become: yes
-
+  become: true

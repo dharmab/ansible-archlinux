@@ -5,4 +5,4 @@
       - vagrant
       - virtualbox
       - virtualbox-host-modules-arch
-  become: yes
+  become: true

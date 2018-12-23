@@ -1,17 +1,17 @@
 ---
 - name: update pacman cache
-  pacman: update_cache=yes
-  become: yes
+  pacman: update_cache=true
+  become: true
 
 - name: install pacman tools
   pacman:
     name: pacman-contrib
-  become: yes
+  become: true
 
 - name: install reflector
   pacman:
     name: reflector
-  become: yes
+  become: true
 
 - name: check if mirrorlist was recently updated
   # This is simpler with find in Ansible 2.0 and should be changed when that is
@@ -23,11 +23,11 @@
 
 - name: update pacman mirrorlist
   command: /usr/bin/reflector --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist
-  become: yes
+  become: true
   when: "mirrorlist_age.stat.mtime < ansible_date_time.epoch|int - (60 * 60 * 24)"
 
 - name: perform full upgrade
   pacman:
-    upgrade: yes
-    update_cache: yes
-  become: yes
+    upgrade: true
+    update_cache: true
+  become: true

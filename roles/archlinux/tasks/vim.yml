@@ -4,13 +4,13 @@
    name: vim
    state: absent
    force: true
-  become: yes
-  ignore_errors: yes
+  become: true
+  ignore_errors: true
 
 - name: install vim
   pacman:
     name: gvim
-  become: yes
+  become: true
 
 - name: create vim autoload directory
   file:
@@ -18,14 +18,14 @@
     owner: "{{ archlinux_username }}"
     group: users
     state: directory
-  become: yes
+  become: true
   become_user: "{{ archlinux_username }}"
 
 - name: install vim-plug
   get_url:
     url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
     dest: "/home/{{ archlinux_username }}/.vim/autoload/plug.vim"
-  become: yes
+  become: true
   become_user: "{{ archlinux_username }}"
 
 - name: configure .vimrc
@@ -34,15 +34,15 @@
     dest: /home/{{ archlinux_username }}/.vimrc
     owner: {{ archlinux_username }}
     group: users
-  become: yes
+  become: true
   become_user: "{{ archlinux_username }}"
 
 - name: install and update Vim plugins
   command: "/usr/bin/vim +PlugUpdate +qall!"
-  become: yes
+  become: true
   become_user: "{{ archlinux_username }}"
 
 - name: update vim-plug
   command: "/usr/bin/vim +PlugUpgrade +qall!"
-  become: yes
+  become: true
   become_user: "{{ archlinux_username }}"

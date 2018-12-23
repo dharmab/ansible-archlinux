@@ -2,14 +2,14 @@
 - name: install git
   pacman:
     name: git
-  become: yes
+  become: true
 
 - name: configure git name
   git_config:
     name: user.name
     value: "{{ archlinux_user_real_name }}"
     scope: global
-  become: yes
+  become: true
   become_user: "{{ archlinux_username }}"
 
 - name: configure git email
@@ -17,16 +17,16 @@
     name: user.email
     value: "{{ archlinux_user_email }}"
     scope: global
-  become: yes
+  become: true
   become_user: "{{ archlinux_username }}"
 
 - name: create global gitignore file
   file:
     path: /home/{{ archlinux_username }}/.gitignore
     state: touch
-    owner: {{ archlinux_username }}
+    owner: "{{ archlinux_username }}"
     group: users
-  become: yes
+  become: true
   become_user: "{{ archlinux_username }}"
 
 - name: configure global gitignore location
@@ -34,13 +34,13 @@
     name: core.excludesfile
     value: "~/.gitignore"
     scope: global
-  become: yes
+  become: true
   become_user: "{{ archlinux_username }}"
 
 - name: configure global gitignore
   lineinfile:
     path: /home/{{ archlinux_username }}/.gitignore
-    line: {{ item }}
+    line: "{{ item }}"
   with_items:
     - "*.swo"
     - "*.swp"
@@ -49,5 +49,5 @@
     - ".envrc"
     - ".vagrant.d/"
     - ".ycm_extra_conf.py"
-  become: yes
+  become: true
   become_user: "{{ archlinux_username }}"
