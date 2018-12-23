@@ -1,3 +1,4 @@
+---
 - name: install i3
   pacman:
     name:
@@ -12,7 +13,7 @@
   file:
     name: /home/{{ archlinux_username }}/.i3
     state: directory
-    owner: {{ archlinux_username }}
+    owner: "{{ archlinux_username }}"
     group: users
   become: true
 
@@ -20,7 +21,7 @@
   template:
     src: i3/config
     dest: /home/{{ archlinux_username }}/.i3/config
-    owner: {{ archlinux_username }}
+    owner: "{{ archlinux_username }}"
     group: users
   become: true
 
@@ -28,6 +29,6 @@
   template:
     src: i3/i3status
     dest: /home/{{ archlinux_username }}/.i3/i3status
-    owner: {{ archlinux_username }}
+    owner: "{{ archlinux_username }}"
     group: users
   become: true

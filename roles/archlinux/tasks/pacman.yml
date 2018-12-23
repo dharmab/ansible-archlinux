@@ -22,9 +22,16 @@
   register: mirrorlist_age
 
 - name: update pacman mirrorlist
-  command: /usr/bin/reflector --country "United States" -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist
+  command: >-
+    /usr/bin/reflector
+    --country "United States"
+    -l 200
+    -p http
+    --sort rate
+    --save /etc/pacman.d/mirrorlist
   become: true
-  when: "mirrorlist_age.stat.mtime < ansible_date_time.epoch|int - (60 * 60 * 24)"
+  when: >-
+    mirrorlist_age.stat.mtime < ansible_date_time.epoch|int - (60 * 60 * 24)
 
 - name: perform full upgrade
   pacman:

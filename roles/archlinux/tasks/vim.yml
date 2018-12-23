@@ -1,9 +1,9 @@
 ---
 - name: remove vim minimal package
   pacman:
-   name: vim
-   state: absent
-   force: true
+    name: vim
+    state: absent
+    force: true
   become: true
   ignore_errors: true
 
@@ -32,7 +32,7 @@
   copy:
     src: vimrc
     dest: /home/{{ archlinux_username }}/.vimrc
-    owner: {{ archlinux_username }}
+    owner: "{{ archlinux_username }}"
     group: users
   become: true
   become_user: "{{ archlinux_username }}"
