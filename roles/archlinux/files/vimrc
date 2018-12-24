@@ -146,6 +146,7 @@ vmap <C-c> "*y
 
 " Disable some useless commands
 cnoreabbrev X x
+cnoreabbrev W w
 map Q <Nop>
 
 " Airline tweaks
