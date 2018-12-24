@@ -14,11 +14,10 @@
   become: true
 
 - name: check if mirrorlist was recently updated
-  # This is simpler with find in Ansible 2.0 and should be changed when that is
-  # release is available in Arch
-  # find: paths="/etc/pacman.d/mirrorlist" age=1d
-  stat:
-    path: "/etc/pacman.d/mirrorlist"
+  find:
+    paths:
+      - /etc/pacman.d/mirrorlist
+    age: 1d
   register: mirrorlist_age
 
 - name: update pacman mirrorlist
@@ -30,8 +29,7 @@
     --sort rate
     --save /etc/pacman.d/mirrorlist
   become: true
-  when: >-
-    mirrorlist_age.stat.mtime < ansible_date_time.epoch|int - (60 * 60 * 24)
+  when: mirrorlist_age.matched|1 > 1
 
 - name: perform full upgrade
   pacman:
