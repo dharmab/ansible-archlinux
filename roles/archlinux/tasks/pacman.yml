@@ -29,7 +29,7 @@
     --sort rate
     --save /etc/pacman.d/mirrorlist
   become: true
-  when: mirrorlist_age.matched|1 > 1
+  when: mirrorlist_age.matched|int > 1
 
 - name: perform full upgrade
   pacman:
