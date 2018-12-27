@@ -23,7 +23,7 @@
 - name: create global gitignore file
   file:
     path: /home/{{ archlinux_username }}/.gitignore
-    state: touch
+    state: file
     owner: "{{ archlinux_username }}"
     group: users
   become: true
