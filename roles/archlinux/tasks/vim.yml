@@ -21,7 +21,7 @@
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: install vim-plug
+- name: install latest vim-plug
   get_url:
     url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
     dest: "/home/{{ archlinux_username }}/.vim/autoload/plug.vim"
@@ -39,10 +39,5 @@
 
 - name: install and update Vim plugins
   command: "/usr/bin/vim +PlugUpdate +qall!"
-  become: true
-  become_user: "{{ archlinux_username }}"
-
-- name: update vim-plug
-  command: "/usr/bin/vim +PlugUpgrade +qall!"
   become: true
   become_user: "{{ archlinux_username }}"
