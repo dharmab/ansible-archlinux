@@ -108,6 +108,7 @@
 - name: install applications
   pacman:
     name:
+      - chromium
       - evince
       - firefox
       - gimp
