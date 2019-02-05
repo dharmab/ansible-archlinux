@@ -90,7 +90,7 @@
   become: true
 
 - name: template Xresources
-  copy:
+  template:
     src: Xresources
     dest: /home/{{ archlinux_username }}/.Xresources
     owner: "{{ archlinux_username }}"

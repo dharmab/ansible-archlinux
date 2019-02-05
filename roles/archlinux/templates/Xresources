@@ -1,7 +1,6 @@
-UXTerm*faceName: Inconsolata for Powerline:style=Regular:size=16
+UXTerm*faceName: Inconsolata for Powerline:style=Regular:size={{ archlinux_terminal_font_size }}
 UXTerm*Border: off
 *VT100.colorBDMode: true
 *VT100.colorBD: red
 *VT100.colorULMode: true
 *VT100.colorUL: cyan
-
