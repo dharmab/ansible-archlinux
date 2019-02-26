@@ -29,7 +29,8 @@ Plug 'terryma/vim-multiple-cursors'
 
 " Fancy statusbar
 " Powerline fonts recommended
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 
 " Git integration
@@ -150,10 +151,14 @@ cnoreabbrev W w
 map Q <Nop>
 
 " Airline tweaks
+let g:airline_theme = 'dark_minimal'
 " Always show statusline
 set laststatus=2
 " Use Powerline fonts
 let g:airline_powerline_fonts = 1
+" Don't show file encoding
+let g:airline_section_y = ''
+let g:airline_skip_empty_sections = 1
 
 " CtrlP tweaks
 " Ignore certain filetypes
@@ -176,6 +181,8 @@ cnoreabbrev ycm YcmCompleter
 " ALE tweaks
 " Don't check for long lines in Python files
 let g:ale_python_flake8_options='--ignore=E501'
+" Dont use mypy for Python syntax checks (already covered by flake8)
+let g:ale_python_mypy_ignore_invalid_syntax=1
 " Don't check for non-constant source in Shell files
 let g:ale_sh_shellcheck_options='--exclude SC1090'
 " Tweak appearance
@@ -185,6 +192,11 @@ let g:ale_echo_msg_warning_str = 'Warning'
 let g:ale_echo_msg_error_str = 'Error'
 let g:ale_echo_msg_format = '%severity%: %s (%linter% %code%)'
 
+" Python tweaks
+" Don't autoindent in Python when typing a colon
+autocmd FileType python setlocal indentkeys-=<:>
+autocmd FileType python setlocal indentkeys-=:
+
 " JSON tweaks
 " High contrast colors (dark theme assumed)
 highlight jsonKeyword ctermfg=Blue
@@ -193,9 +205,6 @@ highlight jsonNumber ctermfg=Red
 highlight jsonBoolean ctermfg=Red
 highlight jsonNull ctermfg=Red
 
+" Shell tweaks
 " Disable cursorline in shell scripts (performance)
 au Filetype sh set nocursorline
-
-" Fix backspace on macOS
-set backspace=eol,indent,start
-
