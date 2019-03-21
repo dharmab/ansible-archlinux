@@ -5,11 +5,16 @@ set nocompatible
 nnoremap <SPACE> <Nop>
 let mapleader="\<Space>"
 
+" Workaround for https://github.com/chriskempson/base16-vim/issues/197
+function FixupBase16(info)
+    !sed -i '/Base16hi/\! s/a:\(attr\|guisp\)/l:\1/g' ~/.vim/plugged/base16-vim/colors/*.vim
+endfunction
+
 " BEGIN VIM-PLUG CONFIG
 call plug#begin('~/.vim/plugged')
 
 " Base16 colorscheme
-Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim', { 'do': function('FixupBase16') }
 
 " Syntax checking
 " Install developer tools for syntax checking: https://github.com/w0rp/ale#supported-languages
@@ -52,7 +57,7 @@ Plug 'dzeban/vim-log-syntax'
 " Automatically close parentheses, etc.
 Plug 'Raimondi/delimitMate'
 
-" Generqal comment managemnt
+" General comment management
 " <leader>c<space> to toggle comments
 Plug 'scrooloose/nerdcommenter'
 
@@ -208,3 +213,7 @@ highlight jsonNull ctermfg=Red
 " Shell tweaks
 " Disable cursorline in shell scripts (performance)
 au Filetype sh set nocursorline
+
+" Fix backspace on macOS
+set backspace=eol,indent,start
+
