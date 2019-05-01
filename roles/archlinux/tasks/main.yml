@@ -134,7 +134,7 @@
     group: users
   become: true
 
-- name: configure direnv (must be installed separately via AUR or Homebrew)
+- name: configure direnv (must be installed separately via AUR or Go)
   copy:
     src: direnvrc
     dest: /home/{{ archlinux_username }}/.direnvrc
