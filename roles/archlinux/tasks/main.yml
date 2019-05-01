@@ -29,6 +29,7 @@
       - ripgrep
       - rsync
       - shellcheck
+      - wpa_supplicant
   become: true
 
 - name: enable network time
