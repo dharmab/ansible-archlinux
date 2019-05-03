@@ -4,7 +4,7 @@
     name: docker
   become: true
 
-- name: Configure Docker user namespace remap range
+- name: configure Docker user namespace remap range
   copy:
     dest: /etc/subuid
     content: |
@@ -12,7 +12,7 @@
     mode: 0644
   become: true
 
-- name: Configure Docker user namespace remap range
+- name: configure Docker group namespace remap range
   copy:
     dest: /etc/subgid
     content: |
@@ -20,14 +20,23 @@
     mode: 0644
   become: true
 
-- name: Configure Docker daemon
+- name: create /etc/docker directory
+  file:
+    path: /etc/docker
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  become: true
+
+- name: configure Docker daemon
   copy:
     src: daemon.json
     dest: /etc/docker/daemon.json
     mode: 0644
   become: true
 
-- name: Start Docker daemon
+- name: start Docker daemon
   systemd:
     name: docker.service
     state: started
