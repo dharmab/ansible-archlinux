@@ -77,12 +77,13 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-sleuth'
 
 " Ripgrep code search
+" Use :Rg '<search term>' to search a codebase
 Plug 'jremmen/vim-ripgrep'
 
 " Better JSON
 Plug 'elzr/vim-json'
 
-" Jsonnet
+" Jsonnet syntax highlighting and autoformatting
 Plug 'google/vim-jsonnet'
 
 " Prometheus rules syntax highlighting
@@ -91,10 +92,6 @@ Plug 'skreuzer/vim-prometheus'
 call plug#end()
 filetype plugin indent on
 " END VUNDLE CONFIG
-
-" Allow the use of project-specific vimrc
-set exrc
-set secure
 
 " Color scheme
 " Requires https://github.com/chriskempson/base16-shell
@@ -129,6 +126,7 @@ set mouse=a
 set wrapscan
 
 " Smart search case sensitivity
+" Searches are case insensitive unless an uppercase character appears
 set ignorecase
 set smartcase
 
@@ -148,6 +146,7 @@ nmap <silent> <A-k> :wincmd k<CR>
 nmap <silent> <A-l> :wincmd l<CR>
 
 " Use Ctrl+c to copy selection to clipboard
+" Note that this is still Ctrl+c on macOS
 vmap <C-c> "*y
 
 " Disable some useless commands
@@ -168,8 +167,8 @@ let g:airline_skip_empty_sections = 1
 " CtrlP tweaks
 " Ignore certain filetypes
 set wildignore+=*.pyc
-" keybinds
-let g:ctrlp_map = '<c-p>'
+" Keybinds
+let g:ctrlp_map = '<c-p>'  " Why is CtrlP not bound to Ctrl+p by default?
 let g:ctrlp_cmd = 'CtrlP'
 
 " Multiple cursors tweaks
@@ -177,16 +176,16 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:multi_cursor_prev_key='<C-b>'
 
 " Command to open browser for Markdown Preview
-let g:previm_open_cmd = 'chromium'
+let g:previm_open_cmd = 'chromium'  " Consider xdg-open (Linux) or open (macOS)
 
 " YouCompleteMe tweaks
-let g:ycm_python_binary_path='python'
+let g:ycm_python_binary_path='python3'
 cnoreabbrev ycm YcmCompleter
 
 " ALE tweaks
 " Don't check for long lines in Python files
 let g:ale_python_flake8_options='--ignore=E501'
-" Dont use mypy for Python syntax checks (already covered by flake8)
+" Don't use mypy for Python syntax checks (already covered by flake8)
 let g:ale_python_mypy_ignore_invalid_syntax=1
 " Don't check for non-constant source in Shell files
 let g:ale_sh_shellcheck_options='--exclude SC1090'
@@ -213,7 +212,3 @@ highlight jsonNull ctermfg=Red
 " Shell tweaks
 " Disable cursorline in shell scripts (performance)
 au Filetype sh set nocursorline
-
-" Fix backspace on macOS
-set backspace=eol,indent,start
-
