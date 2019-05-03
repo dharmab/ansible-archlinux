@@ -2,7 +2,9 @@
 - name: create normal user
   user:
     name: "{{ archlinux_username }}"
-    createhome: true
+    create_home: true
     group: users
-    groups: wheel
+    groups:
+      - wheel
+      - docker
   become: true

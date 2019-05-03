@@ -1,7 +1,8 @@
 ---
 - import_tasks: pacman.yml
-- import_tasks: user.yml
 - import_tasks: virtualization.yml
+- import_tasks: docker.yml
+- import_tasks: user.yml
 - import_tasks: git.yml
 - import_tasks: c-family.yml
 - import_tasks: java.yml
