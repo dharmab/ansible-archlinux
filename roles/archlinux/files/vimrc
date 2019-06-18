@@ -5,16 +5,11 @@ set nocompatible
 nnoremap <SPACE> <Nop>
 let mapleader="\<Space>"
 
-" Workaround for https://github.com/chriskempson/base16-vim/issues/197
-function FixupBase16(info)
-    !sed -i '/Base16hi/\! s/a:\(attr\|guisp\)/l:\1/g' ~/.vim/plugged/base16-vim/colors/*.vim
-endfunction
-
 " BEGIN VIM-PLUG CONFIG
 call plug#begin('~/.vim/plugged')
 
 " Base16 colorscheme
-Plug 'chriskempson/base16-vim', { 'do': function('FixupBase16') }
+Plug 'chriskempson/base16-vim'
 
 " Syntax checking
 " Install developer tools for syntax checking: https://github.com/w0rp/ale#supported-languages
