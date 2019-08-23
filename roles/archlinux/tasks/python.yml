@@ -2,16 +2,8 @@
 - name: install python development tools
   pacman:
     name:
-      - python2
-      - python2-pip
       - python
       - python-pip
-  become: true
-
-- name: install flake8 for python 2
-  pip:
-    name: flake8
-    executable: pip2
   become: true
 
 - name: install flake8 for python 3
