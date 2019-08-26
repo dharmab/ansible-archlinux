@@ -21,6 +21,7 @@
       - curl
       - htop
       - httpie
+      - iotop
       - jq
       - nftables
       - nmap
