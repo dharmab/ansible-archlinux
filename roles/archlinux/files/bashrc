@@ -37,6 +37,9 @@ fi
 # If not running interactively, stop here
 [[ $- != *i* ]] && return
 
+complete man which
+complete -cf strace sudo watch
+
 # Base16 Shell
 # Run `base16_(colorscheme)` to change colors in shell and Vim
 BASE16_SHELL=$HOME/.config/base16-shell/
