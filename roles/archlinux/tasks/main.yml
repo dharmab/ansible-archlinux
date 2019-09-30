@@ -114,10 +114,10 @@
       - chromium
       - evince
       - firefox
+      - kitty
       - mpv
       - pcmanfm
       - viewnior
-      - xterm
   become: true
 
 - name: create AUR build directory
@@ -144,3 +144,11 @@
     group: users
   become: true
   become_user: "{{ archlinux_username }}"
+
+- name: configure kitty
+  template:
+    src: kitty.confg
+    dest: /home/{{ archlinux_username }}/.config/kitty/kitty.conf
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
