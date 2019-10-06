@@ -31,6 +31,11 @@
   become: true
   when: mirrorlist_age.matched|int > 0
 
+- name: install base metapackage
+  pacman:
+    name: base
+  become: true
+
 - name: perform full upgrade
   pacman:
     upgrade: true

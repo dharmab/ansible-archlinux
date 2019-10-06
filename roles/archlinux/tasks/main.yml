@@ -13,6 +13,32 @@
 - import_tasks: i3.yml
 - import_tasks: wallpaper.yml
 
+- name: install firmware
+  pacman:
+    name: linux-firmware
+  become: true
+
+- name: install networking tools
+  pacman:
+    name:
+      - netctl
+      - nftables
+      - ntp
+      - openvpn
+      - wpa_supplicant
+
+- name: install filesystem tools
+  pacman:
+    name:
+      - cryptsetup
+      - e2fsprogs
+
+- name: install man pages
+  pacman:
+    name:
+      - man-db
+      - man-pages
+
 - name: install utilities
   pacman:
     name:
@@ -23,15 +49,15 @@
       - httpie
       - iotop
       - jq
-      - nftables
+      - less
       - nmap
       - ntp
       - openssh
-      - openvpn
       - ripgrep
       - rsync
       - shellcheck
-      - wpa_supplicant
+      - usbutils
+      - which
   become: true
 
 - name: enable network time
