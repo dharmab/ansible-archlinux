@@ -17,7 +17,7 @@ battery 0 {
 }
 
 {% for interface_prefix in ["e", "w", "tun"] %}
-{% for interface in ansible_interfaces %}
+{% for interface in ansible_interfaces|sort %}
 {% if interface.startswith(interface_prefix) %}
 {% if interface.startswith("tun") %}
 order += "ethernet {{ interface }}"
