@@ -23,7 +23,6 @@
     name:
       - netctl
       - nftables
-      - ntp
       - openvpn
       - wpa_supplicant
 
@@ -51,7 +50,6 @@
       - jq
       - less
       - nmap
-      - ntp
       - openssh
       - ripgrep
       - rsync
@@ -60,9 +58,15 @@
       - which
   become: true
 
+- name: uninstall ntpd
+  pacman:
+    name: ntp
+    state: absent
+  become: true
+
 - name: enable network time
   service:
-    name: ntpd
+    name: systemd-timesyncd
     state: started
     enabled: true
   become: true
