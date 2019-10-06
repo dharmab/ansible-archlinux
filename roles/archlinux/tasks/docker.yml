@@ -8,7 +8,7 @@
   copy:
     dest: /etc/subuid
     content: |
-      default:165536:4096
+      dockremap:165536:4096
     mode: 0644
   become: true
 
@@ -16,7 +16,7 @@
   copy:
     dest: /etc/subgid
     content: |
-      default:165536:4096
+      dockremap:165536:4096
     mode: 0644
   become: true
 
