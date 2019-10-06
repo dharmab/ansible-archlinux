@@ -16,7 +16,9 @@ battery 0 {
     low_threshold = 15
 }
 
+{% for interface_prefix in ["e", "w", "tun"] %}
 {% for interface in ansible_interfaces %}
+{% if interface.startswith(interface_prefix) %}
 {% if interface.startswith("tun") %}
 order += "ethernet {{ interface }}"
 ethernet {{ interface }} {
@@ -35,9 +37,8 @@ wireless {{ interface }} {
     format_up = "WLAN: %ip (%essid, %quality, %bitrate)"
     format_down = "WLAN: disconnected"
 }
-{% else %}{% endif %}
+{% else %}{% endif %}{% endif %}{% endfor %}{% endfor %}
 
-{% endfor %}
 order += "tztime local"
 tztime local {
     format = "%Y-%m-%d %H:%M:%S"
