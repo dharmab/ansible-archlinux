@@ -22,12 +22,25 @@
       - netctl
       - openvpn
       - wpa_supplicant
+  become: true
 
 - name: install filesystem tools
   pacman:
     name:
       - cryptsetup
       - e2fsprogs
+  become: true
+
+- name: install audio tools
+  pacman:
+    name:
+      - alsa-firmware
+      - alsa-utils
+      - paprefs
+      - pavucontrol
+      - pulseaudio
+      - pulseaudio-alsa
+  become: true
 
 - name: install man pages
   pacman:
@@ -38,7 +51,6 @@
 - name: install utilities
   pacman:
     name:
-      - alsa-utils
       - aria2
       - curl
       - htop
@@ -126,14 +138,6 @@
     owner: "{{ archlinux_username }}"
     group: users
   become: true
-
-- name: install pulseaudio/alsa
-  pacman:
-    name:
-      - alsa-utils
-      - pavucontrol
-      - pulseaudio
-      - pulseaudio-alsa
 
 - name: install applications
   pacman:
