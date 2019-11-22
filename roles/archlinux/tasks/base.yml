@@ -4,6 +4,18 @@
     name: linux-firmware
   become: true
 
+- name: install intel microcode
+  pacman:
+    name: intel-ucode
+  when: "'GenuineIntel' in ansible_processor"
+  become: true
+
+- name: install amd microcode
+  pacman:
+    name: amd-ucode
+  when: "'AuthenticAMD' in ansible_processor"
+  become: true
+
 - name: install networking tools
   pacman:
     name:
