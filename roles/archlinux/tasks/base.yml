@@ -176,6 +176,14 @@
   become: true
   become_user: "{{ archlinux_username }}"
 
+- name: create kitty configuration directory
+  file:
+    dest: /home/{{ archlinux_username }}/.config/kitty
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+
 - name: configure kitty
   template:
     src: kitty.conf
