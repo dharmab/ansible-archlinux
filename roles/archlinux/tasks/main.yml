@@ -1,6 +1,7 @@
 ---
 - import_tasks: pacman.yml
 - import_tasks: base.yml
+- import_tasks: cpu.yml
 - import_tasks: gpu.yml
 - import_tasks: virtualization.yml
 - import_tasks: docker.yml
