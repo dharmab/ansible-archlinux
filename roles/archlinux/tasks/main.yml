@@ -1,6 +1,7 @@
 ---
 - import_tasks: pacman.yml
 - import_tasks: base.yml
+- import_tasks: network.yml
 - import_tasks: time.yml
 - import_tasks: cpu.yml
 - import_tasks: gpu.yml
@@ -9,10 +10,10 @@
 - import_tasks: user.yml
 - import_tasks: git.yml
 - import_tasks: c-family.yml
+- import_tasks: golang.yml
 - import_tasks: java.yml
 - import_tasks: python.yml
 - import_tasks: ruby.yml
-- import_tasks: golang.yml
 - import_tasks: vim.yml
 - import_tasks: i3.yml
 - import_tasks: wallpaper.yml

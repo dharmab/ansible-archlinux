@@ -1,0 +1,15 @@
+- name: install networking tools
+  pacman:
+    name:
+      - netctl
+      - openvpn
+      - wpa_supplicant
+  become: true
+
+- name: enable firewall
+  service:
+    name: iptables
+    state: started
+    enabled: true
+  become: true
+

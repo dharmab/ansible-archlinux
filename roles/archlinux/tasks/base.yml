@@ -4,14 +4,6 @@
     name: linux-firmware
   become: true
 
-- name: install networking tools
-  pacman:
-    name:
-      - netctl
-      - openvpn
-      - wpa_supplicant
-  become: true
-
 - name: install filesystem tools
   pacman:
     name:
@@ -53,13 +45,6 @@
       - shellcheck
       - usbutils
       - which
-  become: true
-
-- name: enable firewall
-  service:
-    name: iptables
-    state: started
-    enabled: true
   become: true
 
 - name: install shell colorschemes
