@@ -35,7 +35,7 @@
       # applicable packages and hope one works
       - intel-media-driver
       - libva-intel-driver
-      # Intel doesn't support VDPAU natively, so install a VPDAU to VA-API
+      # Intel doesn't support VDPAU natively, so install a VDPAU to VA-API
       # translation layer
       - libvdpau-va-gl
   when: not display_controllers.results[1].failed
