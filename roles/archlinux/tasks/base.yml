@@ -90,6 +90,7 @@
     owner: "{{ archlinux_username }}"
     group: users
   become: true
+  become_user: "{{ archlinux_username }}"
 
 - name: template Xresources
   template:
@@ -98,6 +99,7 @@
     owner: "{{ archlinux_username }}"
     group: users
   become: true
+  become_user: "{{ archlinux_username }}"
 
 - name: install applications
   pacman:
@@ -117,6 +119,7 @@
     owner: "{{ archlinux_username }}"
     group: users
   become: true
+  become_user: "{{ archlinux_username }}"
 
 - name: create scripts directory
   file:
@@ -125,6 +128,7 @@
     owner: "{{ archlinux_username }}"
     group: users
   become: true
+  become_user: "{{ archlinux_username }}"
 
 - name: configure direnv (must be installed separately via AUR or Go)
   copy:
