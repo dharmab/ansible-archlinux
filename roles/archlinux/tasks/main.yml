@@ -16,4 +16,5 @@
 - import_tasks: ruby.yml
 - import_tasks: vim.yml
 - import_tasks: i3.yml
+- import_tasks: kitty.yml
 - import_tasks: wallpaper.yml
