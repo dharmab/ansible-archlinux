@@ -1,9 +1,9 @@
 ---
 - name: detect display controllers
   # PCI ID 03XX = Display Controller
-  # There are four subcategories of display controller, and a graphics chip
-  # may report as any of them
-  shell: lspci -mnn | grep -E '\[03[0-9]{2}]:' | grep -i {{ item }}
+  # There are four subcategories of display controller, and a graphics chip may
+  # report as any of them
+  shell: lspci -mnn | grep -E '\[03[0-9]{2}]' | grep -i {{ item }}
   with_items:
     - amd
     - intel
