@@ -1,8 +1,0 @@
----
-- name: install virtualization tools
-  pacman:
-    name:
-      - vagrant
-      - virtualbox
-      - virtualbox-host-modules-arch
-  become: true
