@@ -1,0 +1,21 @@
+---
+- name: restart iptables
+  systemd:
+    name: iptables
+    state: restarted
+  become: true
+  notify:
+    - restart docker
+
+- name: restart openssh server
+  systemd:
+    name: sshd
+    state: restarted
+  when: archlinux_enable_openssh_server
+  become: true
+
+- name: restart docker
+  systemd:
+    name: docker
+    state: restarted
+  become: true

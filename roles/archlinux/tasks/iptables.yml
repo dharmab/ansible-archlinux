@@ -1,0 +1,12 @@
+---
+- name: template iptables rules
+  template:
+    src: iptables.rules
+    dest: /etc/iptables/iptables.rules
+    owner: root
+    group: root
+    mode: 0644
+    validate: iptables-restore --test %s
+  become: true
+  notify:
+    - restart iptables

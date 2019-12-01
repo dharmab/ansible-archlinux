@@ -1,8 +1,10 @@
 ---
 - import_tasks: pacman.yml
 - import_tasks: base.yml
+- import_tasks: iptables.yml
 - import_tasks: network.yml
 - import_tasks: time.yml
+- import_tasks: openssh.yml
 - import_tasks: cpu.yml
 - import_tasks: gpu.yml
 - import_tasks: virtualization.yml

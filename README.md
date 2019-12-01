@@ -7,6 +7,7 @@ This role is intended for automation of first-time setup and configuration file 
 * `archlinux_username` (string) - The username of the non-root user this role will create and configure
 * `archlinux_user_real_name` (string) - The non-root user's real name (used for git configuration)
 * `archlinux_user_email` (string) - The non-root user's email address (used for git configuration)
+* `archlinux_enable_openssh_server` (bool) - If `true`, OpenSSH will be enabled and started and connections on port 22/TCP will be allowed from any source. Otherwise, OpenSSH will be disabled and connections on port 22/TCP will be filtered.
 * `archlinux_window_manager_font_size` (int) - The point size of the font used in window title bars, the i3 status bar and dmenu. Default: `18`
 * `archlinux_terminal_font_size` (int) - The point size of the font used in terminals. Default: `16`
 

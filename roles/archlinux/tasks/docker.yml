@@ -10,6 +10,8 @@
     content: |
       dockremap:165536:4096
     mode: 0644
+  notify:
+    - restart docker
   become: true
 
 - name: configure Docker group namespace remap range
@@ -18,6 +20,8 @@
     content: |
       dockremap:165536:4096
     mode: 0644
+  notify:
+    - restart docker
   become: true
 
 - name: create /etc/docker directory
@@ -34,9 +38,11 @@
     src: daemon.json
     dest: /etc/docker/daemon.json
     mode: 0644
+  notify:
+    - restart docker
   become: true
 
-- name: start Docker daemon
+- name: enable Docker daemon
   systemd:
     name: docker.service
     state: started

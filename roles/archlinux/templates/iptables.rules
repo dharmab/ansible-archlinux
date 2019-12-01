@@ -1,0 +1,20 @@
+*nat
+:PREROUTING ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+COMMIT
+*filter
+:INPUT DROP [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT ACCEPT [0:0]
+# Established connections
+--append INPUT --match conntrack --ctstate RELATED,ESTABLISHED --jump ACCEPT
+# Localhost
+--append INPUT --in-interface lo --jump ACCEPT
+# Ping
+--append INPUT --protocol icmp --icmp-type echo-request --jump ACCEPT
+{% if archlinux_enable_openssh_server -%}
+# OpenSSH server
+--append INPUT --protocol tcp --destination-port 22 --jump ACCEPT
+{% endif %}
+COMMIT
