@@ -17,7 +17,7 @@
     group: users
   become: true
 
-- name: template i3 configuration
+- name: configure i3
   template:
     src: i3/config
     dest: /home/{{ archlinux_username }}/.i3/config
@@ -25,7 +25,7 @@
     group: users
   become: true
 
-- name: template i3status configuration
+- name: configure i3status
   template:
     src: i3/i3status
     dest: /home/{{ archlinux_username }}/.i3/i3status

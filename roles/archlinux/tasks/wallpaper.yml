@@ -4,7 +4,7 @@
     name: feh
   become: true
 
-- name: configure wallpaper script
+- name: template wallpaper script
   template:
     src: fehbg
     dest: /home/{{ archlinux_username }}/.fehbg

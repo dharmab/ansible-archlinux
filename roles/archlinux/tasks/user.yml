@@ -44,7 +44,7 @@
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: template Xresources
+- name: configure Xresources
   template:
     src: Xresources
     dest: /home/{{ archlinux_username }}/.Xresources

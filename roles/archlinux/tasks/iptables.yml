@@ -1,5 +1,5 @@
 ---
-- name: template iptables rules
+- name: configure iptables rules
   template:
     src: iptables.rules
     dest: /etc/iptables/iptables.rules
