@@ -148,3 +148,6 @@ bar {
 
 # Set the wallpaper using feh
 exec /usr/bin/sh /home/{{ archlinux_username }}/.fehbg &
+
+# Configure media keys
+exec xbindkeys

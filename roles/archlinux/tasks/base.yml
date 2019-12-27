@@ -11,17 +11,6 @@
       - e2fsprogs
   become: true
 
-- name: install audio tools
-  pacman:
-    name:
-      - alsa-firmware
-      - alsa-utils
-      - paprefs
-      - pavucontrol
-      - pulseaudio
-      - pulseaudio-alsa
-  become: true
-
 - name: install man pages
   pacman:
     name:
