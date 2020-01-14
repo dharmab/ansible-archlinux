@@ -59,7 +59,7 @@
   become: true
 
 - name: enable GUI on boot
-  service:
+  systemd:
     name: lightdm
     enabled: true
   become: true
