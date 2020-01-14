@@ -6,13 +6,10 @@
     owner: root
     group: root
     mode: 0644
+    validate: sshd -t -f %s
   become: true
   notify:
     - restart openssh server
-
-- name: validate openssh configuration
-  command: sshd -t
-  become: true
 
 - name: disable weak openssh moduli
   script:
