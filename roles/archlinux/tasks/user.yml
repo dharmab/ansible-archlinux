@@ -52,4 +52,3 @@
     group: users
   become: true
   become_user: "{{ archlinux_username }}"
-

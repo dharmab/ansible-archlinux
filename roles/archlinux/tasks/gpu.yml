@@ -15,15 +15,15 @@
   pacman:
     name:
       - mesa
-      - libva-mesa-driver # Video decoding acceleration (VA-API)
-      - mesa-vdpau # Video decoding acceleration (VDPAU)
+      - libva-mesa-driver  # Video decoding acceleration (VA-API)
+      - mesa-vdpau  # Video decoding acceleration (VDPAU)
   become: true
 
 - name: install AMD display drivers
   pacman:
     name:
       - xf86-video-amdgpu
-      - vulkan-radeon # Vulkan
+      - vulkan-radeon  # Vulkan
   when: not display_controllers.results[0].failed
   become: true
 

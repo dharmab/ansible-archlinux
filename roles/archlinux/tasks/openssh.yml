@@ -51,4 +51,3 @@
     mode: 0644
   become: true
   become_user: "{{ archlinux_username }}"
-
