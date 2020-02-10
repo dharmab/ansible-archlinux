@@ -21,7 +21,7 @@ Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer --go-compl
 
 " File tree
 " Use :NERDTree to open the tree
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 
 " Sublime Text style multiple cursors
 " Use Ctrl+n to highlight matches and Ctrl+b to undo highlight
@@ -54,7 +54,7 @@ Plug 'Raimondi/delimitMate'
 
 " General comment management
 " <leader>c<space> to toggle comments
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 
 " Markdown Preview
 " Use :PrevimOpen while editing Markdown to open a live preview
