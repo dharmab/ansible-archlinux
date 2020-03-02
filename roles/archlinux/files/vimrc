@@ -160,8 +160,8 @@ let g:airline_section_y = ''
 let g:airline_skip_empty_sections = 1
 
 " CtrlP tweaks
-" Ignore certain filetypes
-set wildignore+=*.pyc
+" Ignore certain directories and filetypes
+set wildignore+=*.pyc,*/vendor/*
 " Keybinds
 let g:ctrlp_map = '<c-p>'  " Why is CtrlP not bound to Ctrl+p by default?
 let g:ctrlp_cmd = 'CtrlP'
