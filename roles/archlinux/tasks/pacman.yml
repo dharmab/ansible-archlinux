@@ -1,6 +1,7 @@
 ---
 - name: update pacman cache
-  pacman: update_cache=true
+  pacman:
+    update_cache: true
   become: true
 
 - name: install pacman tools
