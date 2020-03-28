@@ -17,7 +17,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'w0rp/ale'
 
 " YouCompleteMe completions
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer --go-completer'}
+Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clang-completer --go-completer'}
 
 " File tree
 " Use :NERDTree to open the tree
