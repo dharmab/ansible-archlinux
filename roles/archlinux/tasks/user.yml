@@ -18,12 +18,18 @@
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: template .bashrc
+- name: copy dotfiles
   copy:
-    src: bashrc
-    dest: /home/{{ archlinux_username}}/.bashrc
+    src: {{item}}
+    dest: /home/{{ archlinux_username}}/.{{item}}
     owner: "{{ archlinux_username }}"
     group: users
+  with_items:
+    - bashrc
+    - bash_profile
+    - xinitrc
+    - direnvrc
+    - Xresources
   become: true
   become_user: "{{ archlinux_username }}"
 
@@ -32,23 +38,5 @@
     repo: "https://github.com/dharmab/base16-shell.git"
     dest: /home/{{ archlinux_username }}/.config/base16-shell
     version: master
-  become: true
-  become_user: "{{ archlinux_username }}"
-
-- name: configure direnv (must be installed separately via AUR or Go)
-  copy:
-    src: direnvrc
-    dest: /home/{{ archlinux_username }}/.direnvrc
-    owner: "{{ archlinux_username }}"
-    group: users
-  become: true
-  become_user: "{{ archlinux_username }}"
-
-- name: configure Xresources
-  template:
-    src: Xresources
-    dest: /home/{{ archlinux_username }}/.Xresources
-    owner: "{{ archlinux_username }}"
-    group: users
   become: true
   become_user: "{{ archlinux_username }}"

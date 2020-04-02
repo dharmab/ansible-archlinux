@@ -47,21 +47,18 @@
       - ttf-liberation
   become: true
 
-- name: install GUI
+- name: install arandr
   pacman:
     name:
       - arandr
-      - elementary-icon-theme
-      - lightdm
-      - lightdm-gtk-greeter
-      - lxappearance
-      - xcursor-simpleandsoft
   become: true
 
-- name: enable GUI on boot
-  systemd:
-    name: lightdm
-    enabled: true
+- name: install GUI themes
+  pacman:
+    name:
+      - elementary-icon-theme
+      - lxappearance
+      - xcursor-simpleandsoft
   become: true
 
 - name: install applications
