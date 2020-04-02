@@ -30,6 +30,4 @@
 # Install some programming languages
 - import_tasks: c-family.yml
 - import_tasks: golang.yml
-- import_tasks: java.yml
 - import_tasks: python.yml
-- import_tasks: ruby.yml
