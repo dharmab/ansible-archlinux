@@ -8,11 +8,15 @@ cpu_temperature 0 {
     format = "CPU: %degrees °C"
 }
 
-order += "battery 0"
-battery 0 {
+order += "memory"
+memory {
+    format = "MEM: %used/%total"
+}
+
+order += "battery all"
+battery all {
     format = "BAT: %status (%percentage)"
     format_down = "BAT: N/A"
-    path = "/sys/class/power_supply/BAT0/uevent"
     low_threshold = 15
 }
 
@@ -39,7 +43,7 @@ wireless {{ interface }} {
 }
 {% else %}{% endif %}{% endif %}{% endfor %}{% endfor %}
 
-order += "tztime local"
-tztime local {
+order += "time"
+time {
     format = "%Y-%m-%d %H:%M:%S"
 }
