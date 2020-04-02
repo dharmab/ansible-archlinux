@@ -6,10 +6,3 @@
       - openvpn
       - wpa_supplicant
   become: true
-
-- name: enable firewall
-  systemd:
-    name: iptables
-    state: started
-    enabled: true
-  become: true

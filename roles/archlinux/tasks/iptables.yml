@@ -10,3 +10,9 @@
   become: true
   notify:
     - restart iptables
+
+- name: enable iptables
+  systemd:
+    name: iptables
+    enabled: true
+  become: true

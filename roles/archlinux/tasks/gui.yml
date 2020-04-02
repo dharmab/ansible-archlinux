@@ -1,0 +1,25 @@
+---
+- name: install fonts
+  pacman:
+    name:
+      - adobe-source-code-pro-fonts
+      - powerline-fonts
+      - ttf-dejavu
+      - ttf-droid
+      - ttf-inconsolata
+      - ttf-liberation
+  become: true
+
+- name: install arandr
+  pacman:
+    name:
+      - arandr
+  become: true
+
+- name: install GUI themes
+  pacman:
+    name:
+      - elementary-icon-theme
+      - lxappearance
+      - xcursor-simpleandsoft
+  become: true

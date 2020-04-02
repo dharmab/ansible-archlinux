@@ -1,23 +1,35 @@
 ---
+# Install bare necessities
 - import_tasks: pacman.yml
-- import_tasks: base.yml
-- import_tasks: iptables.yml
+- import_tasks: firmware.yml
+- import_tasks: filesystem.yml
 - import_tasks: network.yml
-- import_tasks: time.yml
+# Secure the system
+- import_tasks: iptables.yml
 - import_tasks: openssh.yml
 - import_tasks: cpu.yml
+# Set the clock
+- import_tasks: time.yml
+# Install some basics
 - import_tasks: gpu.yml
 - import_tasks: qemu.yml
 - import_tasks: docker.yml
+# Configure a user
 - import_tasks: user.yml
-- import_tasks: audio.yml
+- import_tasks: manpages.yml
 - import_tasks: git.yml
+# Install a good text editor
+- import_tasks: vim.yml
+# Install the desktop
+- import_tasks: gui.yml
+- import_tasks: audio.yml
+- import_tasks: i3.yml
+- import_tasks: wallpaper.yml
+- import_tasks: kitty.yml
+- import_tasks: applications.yml
+# Install some programming languages
 - import_tasks: c-family.yml
 - import_tasks: golang.yml
 - import_tasks: java.yml
 - import_tasks: python.yml
 - import_tasks: ruby.yml
-- import_tasks: vim.yml
-- import_tasks: i3.yml
-- import_tasks: kitty.yml
-- import_tasks: wallpaper.yml

@@ -1,0 +1,29 @@
+---
+- name: install utilities
+  pacman:
+    name:
+      - aria2
+      - curl
+      - htop
+      - httpie
+      - iotop
+      - jq
+      - less
+      - nmap
+      - openssh
+      - ripgrep
+      - rsync
+      - shellcheck
+      - usbutils
+      - which
+  become: true
+
+- name: install applications
+  pacman:
+    name:
+      - chromium
+      - evince
+      - mpv
+      - pcmanfm
+      - viewnior
+  become: true

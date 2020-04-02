@@ -1,0 +1,6 @@
+---
+- name: install man pages
+  pacman:
+    name:
+      - man-db
+      - man-pages
