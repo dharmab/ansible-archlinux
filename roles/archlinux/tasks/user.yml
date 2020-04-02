@@ -20,7 +20,7 @@
 
 - name: copy dotfiles
   copy:
-    src: {{item}}
+    src: "{{item}}"
     dest: /home/{{ archlinux_username}}/.{{item}}
     owner: "{{ archlinux_username }}"
     group: users
@@ -29,6 +29,17 @@
     - bash_profile
     - xinitrc
     - direnvrc
+  become: true
+  become_user: "{{ archlinux_username }}"
+
+
+- name: template dotfiles
+  template:
+    src: "{{item}}"
+    dest: /home/{{ archlinux_username}}/.{{item}}
+    owner: "{{ archlinux_username }}"
+    group: users
+  with_items:
     - Xresources
   become: true
   become_user: "{{ archlinux_username }}"
