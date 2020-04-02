@@ -1,7 +1,0 @@
----
-- name: install ruby
-  pacman:
-    name:
-      - ruby
-      - ruby-irb
-  become: true
