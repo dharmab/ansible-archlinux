@@ -1,7 +1,0 @@
----
-- name: install qemu
-  pacman:
-    name:
-      - qemu
-      - libvirt
-  become: true

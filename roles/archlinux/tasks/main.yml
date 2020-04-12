@@ -12,7 +12,7 @@
 - import_tasks: time.yml
 # Install some basics
 - import_tasks: gpu.yml
-- import_tasks: qemu.yml
+- import_tasks: libvirt.yml
 - import_tasks: docker.yml
 # Configure a user
 - import_tasks: user.yml
