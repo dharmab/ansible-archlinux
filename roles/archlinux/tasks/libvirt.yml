@@ -12,7 +12,7 @@
 
 - name: enable libvirtd
   systemd:
-    name: libvirt.service
+    name: libvirtd.service
     state: started
     enabled: true
   become: true

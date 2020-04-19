@@ -37,6 +37,11 @@
   become: true
   become_user: "{{ archlinux_username }}"
 
+- name: install YouCompleteMe dependencies
+  pacman:
+    name: cmake
+  become: true
+
 - name: install and update Vim plugins
   command: "/usr/bin/vim +PlugUpdate +qall!"
   become: true
