@@ -4,6 +4,7 @@
     name:
       - aria2
       - curl
+      - gvfs
       - htop
       - httpie
       - iotop
@@ -14,6 +15,7 @@
       - ripgrep
       - rsync
       - shellcheck
+      - udisks2
       - usbutils
       - which
   become: true
