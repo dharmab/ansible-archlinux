@@ -14,7 +14,7 @@ Plug 'chriskempson/base16-vim'
 " Syntax checking
 " Install developer tools for syntax checking: https://github.com/w0rp/ale#supported-languages
 " Install flake8 for Python PEP8
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " YouCompleteMe completions
 Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clang-completer --go-completer'}
@@ -57,8 +57,9 @@ Plug 'Raimondi/delimitMate'
 Plug 'preservim/nerdcommenter'
 
 " Markdown Preview
-" Use :PrevimOpen while editing Markdown to open a live preview
-Plug 'kannokanno/previm'
+" Use :MarkdownPreview while editing Markdown to open a live preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 
 " Highlight trailing whitespace
 " Use :StripWhitespace to remove trailing shitespace
@@ -101,6 +102,7 @@ set encoding=utf-8
 
 " Sane defaults for indentation
 set tabstop=4
+autocmd Filetype go setlocal tabstop=4
 
 " Show line numbers
 set number
@@ -174,8 +176,9 @@ let g:multi_cursor_prev_key='<C-b>'
 let g:previm_open_cmd = 'chromium'  " Consider xdg-open (Linux) or open (macOS)
 
 " YouCompleteMe tweaks
-let g:ycm_python_binary_path='python3'
+let g:ycm_python_binary_path='python'
 cnoreabbrev ycm YcmCompleter
+map q :YcmCompleter GetDoc <CR>
 
 " ALE tweaks
 " Don't check for long lines in Python files
