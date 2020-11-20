@@ -16,6 +16,7 @@
       - rsync
       - shellcheck
       - udisks2
+      - unzip
       - usbutils
       - which
   become: true
