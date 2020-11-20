@@ -9,6 +9,8 @@ COMMIT
 :OUTPUT ACCEPT [0:0]
 # Established connections
 --append INPUT --match conntrack --ctstate RELATED,ESTABLISHED --jump ACCEPT
+# Invalid packets
+--append INPUT --match conntrack --ctstate INVALID -j DROP
 # Localhost
 --append INPUT --in-interface lo --jump ACCEPT
 # Ping
