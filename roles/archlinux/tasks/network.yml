@@ -3,6 +3,7 @@
   pacman:
     name:
       - dhcpcd
+      - ifplugd
       - netctl
       - openvpn
       - wireguard-tools
