@@ -60,7 +60,6 @@ Plug 'preservim/nerdcommenter'
 " Use :MarkdownPreview while editing Markdown to open a live preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-
 " Highlight trailing whitespace
 " Use :StripWhitespace to remove trailing shitespace
 Plug 'ntpeters/vim-better-whitespace'
