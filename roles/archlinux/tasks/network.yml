@@ -2,7 +2,9 @@
 - name: install networking tools
   pacman:
     name:
+      - dhcpcd
       - netctl
       - openvpn
+      - wireguard-tools
       - wpa_supplicant
   become: true
