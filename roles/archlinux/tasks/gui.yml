@@ -1,4 +1,10 @@
 ---
+- name: install xinit
+  pacman:
+    name:
+      - xorg-xinit
+  become: true
+
 - name: install fonts
   pacman:
     name:
