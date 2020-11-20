@@ -20,6 +20,12 @@
       - lxrandr
   become: true
 
+- name: install xclip
+  pacman:
+    name:
+      - xclip
+  become: true
+
 - name: install GUI themes
   pacman:
     name:
