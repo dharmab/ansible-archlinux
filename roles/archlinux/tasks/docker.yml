@@ -48,3 +48,10 @@
     state: started
     enabled: true
   become: true
+
+- name: add user to Docker group
+  user:
+    name: "{{ archlinux_username }}"
+    groups:
+      - docker
+    append: yes

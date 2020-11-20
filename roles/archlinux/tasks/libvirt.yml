@@ -16,3 +16,10 @@
     state: started
     enabled: true
   become: true
+
+- name: add user to libvirt group
+  user:
+    name: "{{ archlinux_username }}"
+    groups:
+      - libvirt
+    append: yes

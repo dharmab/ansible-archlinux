@@ -6,8 +6,6 @@
     group: users
     groups:
       - wheel
-      - docker
-      - libvirt
   become: true
 
 - name: create scripts directory
