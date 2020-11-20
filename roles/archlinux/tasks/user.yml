@@ -42,6 +42,24 @@
   become: true
   become_user: "{{ archlinux_username }}"
 
+- name: create openssh client configuration directory
+  file:
+    dest: /home/{{ archlinux_username }}/.ssh
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+  become: true
+
+- name: configure openssh client
+  copy:
+    src: openssh/ssh_config
+    dest: /home/{{ archlinux_username }}/.ssh/config
+    owner: "{{ archlinux_username }}"
+    group: users
+    mode: 0644
+  become: true
+  become_user: "{{ archlinux_username }}"
+
 - name: install shell colorschemes
   git:
     repo: "https://github.com/dharmab/base16-shell.git"
