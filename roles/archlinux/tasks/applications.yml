@@ -3,6 +3,7 @@
   pacman:
     name:
       - aria2
+      - bind-tools
       - curl
       - gvfs
       - htop
