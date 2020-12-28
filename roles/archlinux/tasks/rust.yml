@@ -1,0 +1,5 @@
+---
+- name: install rustup
+  pacman:
+    name: rustup
+  become: true
