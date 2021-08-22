@@ -73,7 +73,7 @@ Plug 'tpope/vim-sleuth'
 
 " Ripgrep code search
 " Use :Rg '<search term>' to search a codebase
-Plug 'jremmen/vim-ripgrep'
+Plug 'dharmab/vim-ripgrep'
 
 " Better JSON
 Plug 'elzr/vim-json'
