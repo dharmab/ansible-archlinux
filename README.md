@@ -37,7 +37,6 @@ You can select a colorscheme for the shell and Vim by typing one of the commands
 
 You can place an image file at "~/.wallpaper", and it will automatically be set as the desktop background at login. 
 
-
 ## Rust
 
 This role installs `rustup` without a Rust toolchain. See [Rustup usage](https://wiki.archlinux.org/index.php/Rust#Usage) to install a Rust toolchain.

@@ -10,6 +10,7 @@
     state: directory
     owner: "{{ archlinux_username }}"
     group: users
+    mode: 0755
   become: true
 
 - name: configure kitty
@@ -18,4 +19,5 @@
     dest: /home/{{ archlinux_username }}/.config/kitty/kitty.conf
     owner: "{{ archlinux_username }}"
     group: users
+    mode: 0644
   become: true

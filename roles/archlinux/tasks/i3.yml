@@ -15,6 +15,7 @@
     state: directory
     owner: "{{ archlinux_username }}"
     group: users
+    mode: 0755
   become: true
 
 - name: configure i3
@@ -23,6 +24,7 @@
     dest: /home/{{ archlinux_username }}/.i3/config
     owner: "{{ archlinux_username }}"
     group: users
+    mode: 0644
   become: true
 
 - name: configure i3status
@@ -31,4 +33,5 @@
     dest: /home/{{ archlinux_username }}/.i3/i3status
     owner: "{{ archlinux_username }}"
     group: users
+    mode: 0644
   become: true

@@ -54,4 +54,4 @@
     name: "{{ archlinux_username }}"
     groups:
       - docker
-    append: yes
+    append: true

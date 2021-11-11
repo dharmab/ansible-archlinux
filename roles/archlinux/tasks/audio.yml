@@ -16,5 +16,6 @@
     dest: /home/{{ archlinux_username }}/.xbindkeysrc
     owner: "{{ archlinux_username }}"
     group: users
+    mode: 0644
   become: true
   become_user: "{{ archlinux_username }}"

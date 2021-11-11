@@ -10,5 +10,6 @@
     dest: /home/{{ archlinux_username }}/.fehbg
     owner: "{{ archlinux_username }}"
     group: users
+    mode: 0700
   become: true
   become_user: "{{ archlinux_username }}"

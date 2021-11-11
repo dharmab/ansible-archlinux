@@ -22,5 +22,5 @@
     name: "{{ archlinux_username }}"
     groups:
       - libvirt
-    append: yes
+    append: true
   become: true

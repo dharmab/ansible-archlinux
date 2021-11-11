@@ -14,15 +14,17 @@
     state: directory
     owner: "{{ archlinux_username }}"
     group: users
+    mode: 0755
   become: true
   become_user: "{{ archlinux_username }}"
 
 - name: copy dotfiles
   copy:
-    src: "{{item}}"
-    dest: /home/{{ archlinux_username}}/.{{item}}
+    src: "{{ item }}"
+    dest: /home/{{ archlinux_username }}/.{{ item }}
     owner: "{{ archlinux_username }}"
     group: users
+    mode: 0600
   with_items:
     - bashrc
     - bash_profile
@@ -33,10 +35,11 @@
 
 - name: template dotfiles
   template:
-    src: "{{item}}"
-    dest: /home/{{ archlinux_username}}/.{{item}}
+    src: "{{ item }}"
+    dest: /home/{{ archlinux_username }}/.{{ item }}
     owner: "{{ archlinux_username }}"
     group: users
+    mode: 0600
   with_items:
     - Xresources
   become: true
@@ -48,6 +51,7 @@
     state: directory
     owner: "{{ archlinux_username }}"
     group: users
+    mode: 0700
   become: true
 
 - name: configure openssh client
