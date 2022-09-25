@@ -6,9 +6,3 @@
       - python-pip
       - python-virtualenv
   become: true
-
-- name: install flake8 for python 3
-  pip:
-    name: flake8
-    state: present
-  become: true
