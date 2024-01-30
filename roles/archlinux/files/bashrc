@@ -6,6 +6,8 @@ export EDITOR=vim
 # Set Java Swing UI Look and Feel to GTK, and nicer font antialiasing
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
+# Disable Synk promotional messages
+export DOCKER_SCAN_SUGGEST=false
 # Determine if a command is available
 present() {
     if [ "$#" -ne 1 ]; then
@@ -49,6 +51,10 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
+alias ea=eza
+
+# Search hidden files by default with ripgrep
+alias rg='rg --hidden --glob=!.git/'
 # mkdir creates entire directory hierarchy
 alias mkdir='mkdir -p'
 
@@ -87,4 +93,10 @@ bash_prompt
 # direnv hook
 if present direnv; then
     eval "$(direnv hook bash)"
+    export DIRENV_WARN_TIMEOUT=15s
+fi
+
+# zoxide hook
+if present zoxide; then
+    eval "$(zoxide init bash)"
 fi
