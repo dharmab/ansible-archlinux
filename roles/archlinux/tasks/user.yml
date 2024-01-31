@@ -16,7 +16,6 @@
     group: users
     mode: "0755"
   become: true
-  become_user: "{{ archlinux_username }}"
 
 - name: Copy dotfiles
   ansible.builtin.copy:

@@ -23,7 +23,7 @@
 - name: Create global gitignore file
   ansible.builtin.file:
     path: /home/{{ archlinux_username }}/.gitignore
-    state: file
+    state: touch
     owner: "{{ archlinux_username }}"
     group: users
   become: true

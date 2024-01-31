@@ -38,5 +38,4 @@
       - elementary-icon-theme
       - gnome-themes-extra
       - lxappearance-gtk3
-      - xcursor-premium
   become: true

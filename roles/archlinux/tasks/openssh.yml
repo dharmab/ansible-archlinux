@@ -1,4 +1,11 @@
 ---
+- name: Start openssh server
+  systemd:
+    name: sshd
+    state: started
+  when: archlinux_enable_openssh_server
+  become: true
+
 - name: Configure openssh server
   ansible.builtin.copy:
     src: openssh/sshd_config

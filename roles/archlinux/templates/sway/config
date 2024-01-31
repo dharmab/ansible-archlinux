@@ -15,7 +15,7 @@ set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Pop-dark'
     gsettings set $gnome-schema icon-theme 'Pop'
-    gsettings set $gnome-schema cursor-theme 'Premium'
+    gsettings set $gnome-schema cursor-theme 'Capitaine Cursors - White'
     gsettings set $gnome-schema font-name 'Droid Sans 12'
 }
 
