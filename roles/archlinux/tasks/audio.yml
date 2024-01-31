@@ -2,12 +2,14 @@
 - name: install audio tools
   pacman:
     name:
-      - alsa-firmware
+      - pipewire
+      - pipewire-docs
+      - pipewire-alsa
+      - pipewire-pulse
+      - pipewire-jack
+      - pipewire-audio
       - alsa-utils
-      - paprefs
       - pavucontrol
-      - pulseaudio
-      - pulseaudio-alsa
   become: true
 
 - name: configure x11 key bindings
