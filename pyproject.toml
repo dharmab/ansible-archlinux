@@ -5,8 +5,8 @@ description = ""
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
-ansible = "^4.8.0"
+python = "^3.11"
+ansible = "^9.2.0"
 
 [tool.poetry.dev-dependencies]
 ansible-lint = {extras = ["core", "yamllint"], version = "^5.2.1"}
