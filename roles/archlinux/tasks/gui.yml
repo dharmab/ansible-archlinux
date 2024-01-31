@@ -37,6 +37,6 @@
     name:
       - elementary-icon-theme
       - gnome-themes-extra
-      - lxappearance
+      - lxappearance-gtk3
       - xcursor-premium
   become: true

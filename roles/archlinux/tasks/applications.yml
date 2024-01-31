@@ -30,9 +30,10 @@
 - name: install applications
   pacman:
     name:
-      - chromium
+      - firefox
+      - hunspell-en_US # Firefox spellcheck
       - evince
       - mpv
-      - pcmanfm
+      - pcmanfm-gtk3
       - viewnior
   become: true

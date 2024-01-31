@@ -18,7 +18,7 @@
     owner: "{{ archlinux_username }}"
     group: users
     state: directory
-    mode: 0600
+    mode: 0700
   become: true
   become_user: "{{ archlinux_username }}"
 

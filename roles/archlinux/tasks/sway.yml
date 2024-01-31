@@ -1,0 +1,30 @@
+---
+- name: install sway
+  pacman:
+    name:
+      - sway
+      - polkit
+      - swaylock
+      - swaybg
+      - wmenu
+      - cliphist
+      - xorg-xwayland
+  become: true
+
+- name: create swat configuration directory
+  file:
+    name: /home/{{ archlinux_username }}/.config/sway
+    state: directory
+    owner: "{{ archlinux_username }}"
+    group: users
+    mode: 0755
+  become: true
+
+- name: configure sway
+  template:
+    src: sway/config
+    dest: /home/{{ archlinux_username }}/.config/sway/config
+    owner: "{{ archlinux_username }}"
+    group: users
+    mode: 0644
+  become: true

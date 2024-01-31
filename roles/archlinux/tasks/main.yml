@@ -12,7 +12,6 @@
 - import_tasks: time.yml
 # Install some basics
 - import_tasks: gpu.yml
-- import_tasks: libvirt.yml
 - import_tasks: docker.yml
 # Configure a user
 - import_tasks: user.yml
@@ -24,6 +23,7 @@
 - import_tasks: gui.yml
 - import_tasks: audio.yml
 - import_tasks: i3.yml
+- import_tasks: sway.yml
 - import_tasks: wallpaper.yml
 - import_tasks: kitty.yml
 - import_tasks: applications.yml
