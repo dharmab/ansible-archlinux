@@ -4,5 +4,7 @@
     name:
       - go
       - go-tools
+      - gopls
       - delve
+      - staticcheck
   become: true
