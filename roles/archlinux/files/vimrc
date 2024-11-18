@@ -19,13 +19,15 @@ Plug 'dense-analysis/ale'
 " YouCompleteMe completions
 Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clang-completer --go-completer'}
 
+" Language server
+Plug 'prabirshrestha/vim-lsp'
+
+" GitHub Copilot
+Plug 'github/copilot.vim'
+
 " File tree
 " Use :NERDTree to open the tree
 Plug 'preservim/nerdtree'
-
-" Sublime Text style multiple cursors
-" Use Ctrl+n to highlight matches and Ctrl+b to undo highlight
-Plug 'terryma/vim-multiple-cursors'
 
 " Fancy statusbar
 " Powerline fonts recommended
@@ -77,12 +79,13 @@ Plug 'dharmab/vim-ripgrep'
 
 " Better JSON
 Plug 'elzr/vim-json'
+Plug 'rhysd/vim-fixjson'
 
 " Jsonnet syntax highlighting and autoformatting
 Plug 'google/vim-jsonnet'
 
-" Prometheus rules syntax highlighting
-Plug 'skreuzer/vim-prometheus'
+" Terraform highlighting
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 filetype plugin indent on
@@ -162,14 +165,12 @@ let g:airline_skip_empty_sections = 1
 
 " CtrlP tweaks
 " Ignore certain directories and filetypes
-set wildignore+=*.pyc,*/vendor/*
+set wildignore+=*/.git/*,*/.mypy_cache/*,*.pyc,*/vendor/*,,*/.terraform/*,*/.DS_Store
+" Include hidden files
+let g:ctrlp_show_hidden = 1
 " Keybinds
 let g:ctrlp_map = '<c-p>'  " Why is CtrlP not bound to Ctrl+p by default?
 let g:ctrlp_cmd = 'CtrlP'
-
-" Multiple cursors tweaks
-" Since we bound Ctrl+P, we have to rebind previous selection
-let g:multi_cursor_prev_key='<C-b>'
 
 " Command to open browser for Markdown Preview
 let g:previm_open_cmd = 'chromium'  " Consider xdg-open (Linux) or open (macOS)
@@ -180,6 +181,8 @@ cnoreabbrev ycm YcmCompleter
 map q :YcmCompleter GetDoc <CR>
 
 " ALE tweaks
+" Disable the deprecated and overly opinioned golint linter
+let g:ale_linters = {'go': ['gometalinter', 'gofmt']}
 " Don't check for long lines in Python files
 let g:ale_python_flake8_options='--ignore=E501'
 " Don't use mypy for Python syntax checks (already covered by flake8)
@@ -192,11 +195,22 @@ let g:ale_sign_warning = '--'
 let g:ale_echo_msg_warning_str = 'Warning'
 let g:ale_echo_msg_error_str = 'Error'
 let g:ale_echo_msg_format = '%severity%: %s (%linter% %code%)'
+" Disable the quickfix window (since we're using it for other stuff like
+" ripgrep)
+let g:ale_set_quickfix = 0
 
 " Python tweaks
 " Don't autoindent in Python when typing a colon
 autocmd FileType python setlocal indentkeys-=<:>
 autocmd FileType python setlocal indentkeys-=:
+
+" Go tweaks
+let g:go_metalinter_command = "gopls"
+let g:go_metalinter_autosave = 1
+" Disable vim-go completion (using YCM instead)
+let g:go_code_completion_enabled = 1
+" Disable hello world template in new files
+let g:go_template_autocreate = 0
 
 " JSON tweaks
 " High contrast colors (dark theme assumed)
@@ -209,3 +223,17 @@ highlight jsonNull ctermfg=Red
 " Shell tweaks
 " Disable cursorline in shell scripts (performance)
 au Filetype sh set nocursorline
+
+" Terraform tweaks
+let g:terraform_fmt_on_save=1
+
+" Remove annoying commands
+augroup deleteAnnoyingCommands
+    autocmd!
+    autocmd VimEnter * delcommand Sexplore
+    autocmd VimEnter * delcommand Sleuth
+augroup END
+
+" Allow limited project-specific vim configuration
+set exrc
+set secure
