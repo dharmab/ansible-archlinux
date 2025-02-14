@@ -3,6 +3,7 @@
   pacman:
     name:
       - python
+      - uv
       - python-pip
       - python-virtualenv
   become: true
