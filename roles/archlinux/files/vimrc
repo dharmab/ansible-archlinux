@@ -12,15 +12,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'chriskempson/base16-vim'
 
 " Syntax checking
-" Install developer tools for syntax checking: https://github.com/w0rp/ale#supported-languages
+" Install developer tools for syntax checking: https://github.com/dense-analysis/ale/blob/master/supported-tools.md
 " Install flake8 for Python PEP8
 Plug 'dense-analysis/ale'
 
 " YouCompleteMe completions
 Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clang-completer --go-completer'}
-
-" Language server
-Plug 'prabirshrestha/vim-lsp'
 
 " GitHub Copilot
 Plug 'github/copilot.vim'
@@ -162,6 +159,8 @@ let g:airline_powerline_fonts = 1
 " Don't show file encoding
 let g:airline_section_y = ''
 let g:airline_skip_empty_sections = 1
+" Enable ALE integration
+let g:airline#extensions#ale#enabled = 1
 
 " CtrlP tweaks
 " Ignore certain directories and filetypes
