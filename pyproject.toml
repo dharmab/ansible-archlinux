@@ -1,16 +1,14 @@
-[tool.poetry]
+[project]
 name = "ansible-archlinux"
-version = "0.0.1"
-description = ""
-authors = ["Your Name <you@example.com>"]
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ansible>=11.2.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-ansible = "^9.2.0"
-
-[tool.poetry.dev-dependencies]
-ansible-lint = {extras = ["core", "yamllint"], version = "^5.2.1"}
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+dev = [
+    "ansible-lint>=25.1.2",
+]
