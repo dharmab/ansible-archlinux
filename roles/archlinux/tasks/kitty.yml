@@ -1,23 +1,23 @@
 ---
-- name: install kitty
-  pacman:
+- name: Install kitty
+  community.general.pacman:
     name: kitty
   become: true
 
-- name: create kitty configuration directory
-  file:
+- name: Create kitty configuration directory
+  ansible.builtin.file:
     dest: /home/{{ archlinux_username }}/.config/kitty
     state: directory
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0755
+    mode: "0755"
   become: true
 
-- name: configure kitty
-  template:
+- name: Configure kitty
+  ansible.builtin.template:
     src: kitty.conf
     dest: /home/{{ archlinux_username }}/.config/kitty/kitty.conf
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0644
+    mode: "0644"
   become: true

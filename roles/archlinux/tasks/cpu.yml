@@ -1,12 +1,12 @@
 ---
-- name: install Intel microcode
-  pacman:
+- name: Install Intel microcode
+  community.general.pacman:
     name: intel-ucode
   when: "'GenuineIntel' in ansible_processor"
   become: true
 
-- name: install AMD microcode
-  pacman:
+- name: Install AMD microcode
+  community.general.pacman:
     name: amd-ucode
   when: "'AuthenticAMD' in ansible_processor"
   become: true

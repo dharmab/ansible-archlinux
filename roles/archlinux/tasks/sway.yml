@@ -1,6 +1,6 @@
 ---
-- name: install sway
-  pacman:
+- name: Install sway
+  community.general.pacman:
     name:
       - sway
       - polkit
@@ -11,20 +11,20 @@
       - xorg-xwayland
   become: true
 
-- name: create swat configuration directory
-  file:
+- name: Create swat configuration directory
+  ansible.builtin.file:
     name: /home/{{ archlinux_username }}/.config/sway
     state: directory
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0755
+    mode: "0755"
   become: true
 
-- name: configure sway
-  template:
+- name: Configure sway
+  ansible.builtin.template:
     src: sway/config
     dest: /home/{{ archlinux_username }}/.config/sway/config
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0644
+    mode: "0644"
   become: true

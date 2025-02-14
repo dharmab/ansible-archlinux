@@ -1,12 +1,12 @@
 ---
-- name: uninstall ntpd
-  pacman:
+- name: Uninstall ntpd
+  community.general.pacman:
     name: ntp
     state: absent
   become: true
 
-- name: enable network time
-  systemd:
+- name: Enable network time
+  ansible.builtin.systemd:
     name: systemd-timesyncd
     state: started
     enabled: true

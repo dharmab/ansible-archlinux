@@ -1,6 +1,6 @@
 ---
-- name: install filesystem tools
-  pacman:
+- name: Install filesystem tools
+  community.general.pacman:
     name:
       - cryptsetup
       - e2fsprogs

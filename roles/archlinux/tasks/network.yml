@@ -1,6 +1,6 @@
 ---
-- name: install networking tools
-  pacman:
+- name: Install networking tools
+  community.general.pacman:
     name:
       - dhcpcd
       - ifplugd

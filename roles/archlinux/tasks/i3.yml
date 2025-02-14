@@ -1,6 +1,6 @@
 ---
-- name: install i3
-  pacman:
+- name: Install i3
+  community.general.pacman:
     name:
       - xorg
       - i3-wm
@@ -9,29 +9,29 @@
       - dmenu
   become: true
 
-- name: create i3 configuration directory
-  file:
+- name: Create i3 configuration directory
+  ansible.builtin.file:
     name: /home/{{ archlinux_username }}/.i3
     state: directory
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0755
+    mode: "0755"
   become: true
 
-- name: configure i3
-  template:
+- name: Configure i3
+  ansible.builtin.template:
     src: i3/config
     dest: /home/{{ archlinux_username }}/.i3/config
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0644
+    mode: "0644"
   become: true
 
-- name: configure i3status
-  template:
+- name: Configure i3status
+  ansible.builtin.template:
     src: i3/i3status
     dest: /home/{{ archlinux_username }}/.i3/i3status
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0644
+    mode: "0644"
   become: true

@@ -1,6 +1,6 @@
 ---
-- name: install audio tools
-  pacman:
+- name: Install audio tools
+  community.general.pacman:
     name:
       - pipewire
       - pipewire-docs
@@ -12,12 +12,12 @@
       - pavucontrol
   become: true
 
-- name: configure x11 key bindings
-  copy:
+- name: Configure x11 key bindings
+  ansible.builtin.copy:
     src: xbindkeysrc
     dest: /home/{{ archlinux_username }}/.xbindkeysrc
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0644
+    mode: "0644"
   become: true
   become_user: "{{ archlinux_username }}"

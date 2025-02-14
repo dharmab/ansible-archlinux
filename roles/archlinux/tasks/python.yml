@@ -1,6 +1,6 @@
 ---
-- name: install python development tools
-  pacman:
+- name: Install python development tools
+  community.general.pacman:
     name:
       - python
       - uv

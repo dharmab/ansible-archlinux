@@ -1,6 +1,6 @@
 ---
-- name: install man pages
-  pacman:
+- name: Install man pages
+  community.general.pacman:
     name:
       - man-db
       - man-pages

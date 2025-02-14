@@ -1,56 +1,56 @@
 ---
-- name: install Docker
-  pacman:
+- name: Install Docker
+  community.general.pacman:
     name: docker
   become: true
 
-- name: configure Docker user namespace remap range
-  copy:
+- name: Configure Docker user namespace remap range
+  ansible.builtin.copy:
     dest: /etc/subuid
     content: |
       dockremap:165536:4096
-    mode: 0644
+    mode: "0644"
   notify:
     - restart docker
   become: true
 
-- name: configure Docker group namespace remap range
-  copy:
+- name: Configure Docker group namespace remap range
+  ansible.builtin.copy:
     dest: /etc/subgid
     content: |
       dockremap:165536:4096
-    mode: 0644
+    mode: "0644"
   notify:
     - restart docker
   become: true
 
-- name: create /etc/docker directory
-  file:
+- name: Create /etc/docker directory
+  ansible.builtin.file:
     path: /etc/docker
     state: directory
     owner: root
     group: root
-    mode: 0755
+    mode: "0755"
   become: true
 
-- name: configure Docker daemon
-  copy:
+- name: Configure Docker daemon
+  ansible.builtin.copy:
     src: daemon.json
     dest: /etc/docker/daemon.json
-    mode: 0644
+    mode: "0644"
   notify:
     - restart docker
   become: true
 
-- name: enable Docker daemon
-  systemd:
+- name: Enable Docker daemon
+  ansible.builtin.systemd:
     name: docker.service
     state: started
     enabled: true
   become: true
 
-- name: add user to Docker group
-  user:
+- name: Add user to Docker group
+  ansible.builtin.user:
     name: "{{ archlinux_username }}"
     groups:
       - docker

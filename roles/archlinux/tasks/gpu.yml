@@ -1,34 +1,35 @@
 ---
-- name: detect display controllers
+- name: Detect display controllers
   # PCI ID 03XX = Display Controller
   # There are four subcategories of display controller, and a graphics chip may
   # report as any of them
-  shell: lspci -mnn | grep -E '\[03[0-9]{2}]' | grep -i {{ item }}  # noqa no-changed-when
+  ansible.builtin.shell: lspci -mnn | grep -E '\[03[0-9]{2}]' | grep -i {{ item }}
   with_items:
     - amd
     - intel
     - nvidia
   register: display_controllers
-  ignore_errors: true  # noqa ignore-errors
+  ignore_errors: true # noqa ignore-errors
+  changed_when: false
 
-- name: install mesa (OpenGL implementation)
-  pacman:
+- name: Install mesa (OpenGL implementation)
+  community.general.pacman:
     name:
       - mesa
-      - libva-mesa-driver  # Video decoding acceleration (VA-API)
-      - mesa-vdpau  # Video decoding acceleration (VDPAU)
+      - libva-mesa-driver # Video decoding acceleration (VA-API)
+      - mesa-vdpau # Video decoding acceleration (VDPAU)
   become: true
 
-- name: install AMD display drivers
-  pacman:
+- name: Install AMD display drivers
+  community.general.pacman:
     name:
       - xf86-video-amdgpu
-      - vulkan-radeon  # Vulkan
+      - vulkan-radeon # Vulkan
   when: not display_controllers.results[0].failed
   become: true
 
-- name: install Intel display drivers
-  pacman:
+- name: Install Intel display drivers
+  community.general.pacman:
     name:
       - xf86-video-intel
       # VA-API support varies by generation, so we'll install all of the
@@ -41,8 +42,8 @@
   when: not display_controllers.results[1].failed
   become: true
 
-- name: install Nvidia display drivers
-  pacman:
+- name: Install Nvidia display drivers
+  community.general.pacman:
     name:
       - nvidia
   when: not display_controllers.results[2].failed

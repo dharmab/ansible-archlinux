@@ -1,21 +1,21 @@
 ---
-- name: restart iptables
-  systemd:
+- name: Restart iptables
+  ansible.builtin.systemd:
     name: iptables
     state: restarted
   become: true
   notify:
     - restart docker
 
-- name: restart openssh server
-  systemd:
+- name: Restart openssh server
+  ansible.builtin.systemd:
     name: sshd
     state: restarted
   when: archlinux_enable_openssh_server
   become: true
 
-- name: restart docker
-  systemd:
+- name: Restart docker
+  ansible.builtin.systemd:
     name: docker
     state: restarted
   become: true

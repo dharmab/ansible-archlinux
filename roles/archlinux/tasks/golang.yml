@@ -1,6 +1,6 @@
 ---
-- name: install golang
-  pacman:
+- name: Install golang
+  community.general.pacman:
     name:
       - go
       - go-tools

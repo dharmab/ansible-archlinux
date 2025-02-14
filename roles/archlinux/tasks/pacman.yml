@@ -1,30 +1,30 @@
 ---
-- name: update pacman cache
-  pacman:
+- name: Update pacman cache
+  community.general.pacman:
     update_cache: true
   become: true
 
-- name: install pacman tools
-  pacman:
+- name: Install pacman tools
+  community.general.pacman:
     name: pacman-contrib
   become: true
 
-- name: install reflector
-  pacman:
+- name: Install reflector
+  community.general.pacman:
     name: reflector
   become: true
 
-- name: update pacman mirrorlist
-  script: update-mirrorlist.sh
+- name: Update pacman mirrorlist
+  ansible.builtin.script: update-mirrorlist.sh
   become: true
 
-- name: install base metapackage
-  pacman:
+- name: Install base metapackage
+  community.general.pacman:
     name: base
   become: true
 
-- name: perform full upgrade
-  pacman:
+- name: Perform full upgrade
+  community.general.pacman:
     upgrade: true
     update_cache: true
   become: true

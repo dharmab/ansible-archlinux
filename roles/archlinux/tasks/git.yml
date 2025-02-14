@@ -1,27 +1,27 @@
 ---
-- name: install git
-  pacman:
+- name: Install git
+  community.general.pacman:
     name: git
   become: true
 
-- name: configure git name
-  git_config:
+- name: Configure git name
+  community.general.git_config:
     name: user.name
     value: "{{ archlinux_user_real_name }}"
     scope: global
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: configure git email
-  git_config:
+- name: Configure git email
+  community.general.git_config:
     name: user.email
     value: "{{ archlinux_user_email }}"
     scope: global
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: create global gitignore file
-  file:
+- name: Create global gitignore file
+  ansible.builtin.file:
     path: /home/{{ archlinux_username }}/.gitignore
     state: file
     owner: "{{ archlinux_username }}"
@@ -29,16 +29,16 @@
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: configure global gitignore location
-  git_config:
+- name: Configure global gitignore location
+  community.general.git_config:
     name: core.excludesfile
     value: "~/.gitignore"
     scope: global
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: configure global gitignore
-  lineinfile:
+- name: Configure global gitignore
+  ansible.builtin.lineinfile:
     path: /home/{{ archlinux_username }}/.gitignore
     line: "{{ item }}"
   with_items:

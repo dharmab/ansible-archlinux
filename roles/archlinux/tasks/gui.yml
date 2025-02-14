@@ -1,12 +1,12 @@
 ---
-- name: install xinit
-  pacman:
+- name: Install xinit
+  community.general.pacman:
     name:
       - xorg-xinit
   become: true
 
-- name: install fonts
-  pacman:
+- name: Install fonts
+  community.general.pacman:
     name:
       - adobe-source-code-pro-fonts
       - adobe-source-han-sans-jp-fonts
@@ -19,21 +19,21 @@
       - ttf-liberation
   become: true
 
-- name: install display configuration tools
-  pacman:
+- name: Install display configuration tools
+  community.general.pacman:
     name:
       - arandr
       - lxrandr
   become: true
 
-- name: install xclip
-  pacman:
+- name: Install xclip
+  community.general.pacman:
     name:
       - xclip
   become: true
 
-- name: install GUI themes
-  pacman:
+- name: Install GUI themes
+  community.general.pacman:
     name:
       - elementary-icon-theme
       - gnome-themes-extra

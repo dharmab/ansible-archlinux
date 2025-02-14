@@ -1,5 +1,5 @@
 ---
-- name: install rustup
-  pacman:
+- name: Install rustup
+  community.general.pacman:
     name: rustup
   become: true

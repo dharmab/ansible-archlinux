@@ -1,6 +1,6 @@
 ---
-- name: create normal user
-  user:
+- name: Create normal user
+  ansible.builtin.user:
     name: "{{ archlinux_username }}"
     create_home: true
     group: users
@@ -8,23 +8,23 @@
       - wheel
   become: true
 
-- name: create scripts directory
-  file:
+- name: Create scripts directory
+  ansible.builtin.file:
     name: /home/{{ archlinux_username }}/bin
     state: directory
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0755
+    mode: "0755"
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: copy dotfiles
-  copy:
+- name: Copy dotfiles
+  ansible.builtin.copy:
     src: "{{ item }}"
     dest: /home/{{ archlinux_username }}/.{{ item }}
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0600
+    mode: "0600"
   with_items:
     - bashrc
     - bash_profile
@@ -33,39 +33,39 @@
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: template dotfiles
-  template:
+- name: Template dotfiles
+  ansible.builtin.template:
     src: "{{ item }}"
     dest: /home/{{ archlinux_username }}/.{{ item }}
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0600
+    mode: "0600"
   with_items:
     - Xresources
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: create openssh client configuration directory
-  file:
+- name: Create openssh client configuration directory
+  ansible.builtin.file:
     dest: /home/{{ archlinux_username }}/.ssh
     state: directory
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0700
+    mode: "0700"
   become: true
 
-- name: configure openssh client
-  copy:
+- name: Configure openssh client
+  ansible.builtin.copy:
     src: openssh/ssh_config
     dest: /home/{{ archlinux_username }}/.ssh/config
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0644
+    mode: "0644"
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: install shell colorschemes
-  git:
+- name: Install shell colorschemes
+  ansible.builtin.git:
     repo: "https://github.com/dharmab/base16-shell.git"
     dest: /home/{{ archlinux_username }}/.config/base16-shell
     version: master

@@ -1,5 +1,5 @@
 ---
-- name: install firmware
-  pacman:
+- name: Install firmware
+  community.general.pacman:
     name: linux-firmware
   become: true

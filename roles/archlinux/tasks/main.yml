@@ -1,34 +1,52 @@
 ---
 # Install bare necessities
-- import_tasks: pacman.yml
-- import_tasks: firmware.yml
-- import_tasks: filesystem.yml
-- import_tasks: network.yml
-# Secure the system
-- import_tasks: iptables.yml
-- import_tasks: openssh.yml
-- import_tasks: cpu.yml
-# Set the clock
-- import_tasks: time.yml
-# Install some basics
-- import_tasks: gpu.yml
-- import_tasks: docker.yml
-# Configure a user
-- import_tasks: user.yml
-- import_tasks: manpages.yml
-- import_tasks: git.yml
-# Install a good text editor
-- import_tasks: vim.yml
-# Install the desktop
-- import_tasks: gui.yml
-- import_tasks: audio.yml
-- import_tasks: i3.yml
-- import_tasks: sway.yml
-- import_tasks: wallpaper.yml
-- import_tasks: kitty.yml
-- import_tasks: applications.yml
-# Install some programming languages
-- import_tasks: c-family.yml
-- import_tasks: golang.yml
-- import_tasks: python.yml
-- import_tasks: rust.yml
+- name: Configure pacman and install base packages
+  ansible.builtin.import_tasks: pacman.yml
+- name: Install firmware
+  ansible.builtin.import_tasks: firmware.yml
+- name: Install filesystem tools
+  ansible.builtin.import_tasks: filesystem.yml
+- name: Install networking tools
+  ansible.builtin.import_tasks: network.yml
+- name: Configure firewall
+  ansible.builtin.import_tasks: iptables.yml
+- name: Configure SSH
+  ansible.builtin.import_tasks: openssh.yml
+- name: Install CPU microcode
+  ansible.builtin.import_tasks: cpu.yml
+- name: Automatically sync clock to network time
+  ansible.builtin.import_tasks: time.yml
+- name: Install graphics drivers and APIs
+  ansible.builtin.import_tasks: gpu.yml
+- name: Install Docker
+  ansible.builtin.import_tasks: docker.yml
+- name: Configure regular user
+  ansible.builtin.import_tasks: user.yml
+- name: Install manpages
+  ansible.builtin.import_tasks: manpages.yml
+- name: Install and configure git
+  ansible.builtin.import_tasks: git.yml
+- name: Install and configure Vim
+  ansible.builtin.import_tasks: vim.yml
+- name: Install and configure base UI packages
+  ansible.builtin.import_tasks: gui.yml
+- name: Install and configure audio
+  ansible.builtin.import_tasks: audio.yml
+- name: Install and configure i3wm
+  ansible.builtin.import_tasks: i3.yml
+- name: Install and configure sway
+  ansible.builtin.import_tasks: sway.yml
+- name: Configure desktop wallpaper
+  ansible.builtin.import_tasks: wallpaper.yml
+- name: Install and configure terminal emulator
+  ansible.builtin.import_tasks: kitty.yml
+- name: Install various applications
+  ansible.builtin.import_tasks: applications.yml
+- name: Install C-family development tools
+  ansible.builtin.import_tasks: c-family.yml
+- name: Install Go development tools
+  ansible.builtin.import_tasks: golang.yml
+- name: Install Python development tools
+  ansible.builtin.import_tasks: python.yml
+- name: Install Rust development tools
+  ansible.builtin.import_tasks: rust.yml

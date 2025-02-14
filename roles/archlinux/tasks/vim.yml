@@ -1,50 +1,54 @@
 ---
-- name: remove vim minimal package
-  pacman:
+- name: Remove vim minimal package
+  community.general.pacman:
     name: vim
     state: absent
     force: true
   become: true
-  ignore_errors: true  # noqa ignore-errors
+  ignore_errors: true # noqa ignore-errors
 
-- name: install vim
-  pacman:
+- name: Install vim
+  community.general.pacman:
     name: gvim
   become: true
 
-- name: create vim autoload directory
-  file:
+- name: Create vim autoload directory
+  ansible.builtin.file:
     path: "/home/{{ archlinux_username }}/.vim/autoload"
     owner: "{{ archlinux_username }}"
     group: users
     state: directory
-    mode: 0700
+    mode: "0700"
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: install latest vim-plug
-  get_url:
+- name: Install latest vim-plug
+  ansible.builtin.get_url:
     url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
     dest: "/home/{{ archlinux_username }}/.vim/autoload/plug.vim"
+    owner: "{{ archlinux_username }}"
+    group: users
+    mode: "0644"
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: configure .vimrc
-  copy:
+- name: Configure .vimrc
+  ansible.builtin.copy:
     src: vimrc
     dest: /home/{{ archlinux_username }}/.vimrc
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0644
+    mode: "0644"
   become: true
   become_user: "{{ archlinux_username }}"
 
-- name: install YouCompleteMe dependencies
-  pacman:
+- name: Install YouCompleteMe dependencies
+  community.general.pacman:
     name: cmake
   become: true
 
-- name: install and update Vim plugins
-  command: "/usr/bin/vim +PlugUpdate +qall!"  # noqa no-changed-when
+- name: Install and update Vim plugins
+  ansible.builtin.command: "/usr/bin/vim +PlugUpdate +qall!"
   become: true
   become_user: "{{ archlinux_username }}"
+  changed_when: true

@@ -1,6 +1,6 @@
 ---
-- name: install C/C++ development tools
-  pacman:
+- name: Install C/C++ development tools
+  community.general.pacman:
     name:
       - base-devel
       - gdb

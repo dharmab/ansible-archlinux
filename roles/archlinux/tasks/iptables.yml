@@ -1,18 +1,18 @@
 ---
-- name: configure iptables rules
-  template:
+- name: Configure iptables rules
+  ansible.builtin.template:
     src: iptables.rules
     dest: /etc/iptables/iptables.rules
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
     validate: iptables-restore --test %s
   become: true
   notify:
     - restart iptables
 
-- name: enable iptables
-  systemd:
+- name: Enable iptables
+  ansible.builtin.systemd:
     name: iptables
     enabled: true
   become: true

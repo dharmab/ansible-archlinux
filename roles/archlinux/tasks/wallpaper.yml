@@ -1,15 +1,15 @@
 ---
-- name: install feh
-  pacman:
+- name: Install feh
+  community.general.pacman:
     name: feh
   become: true
 
-- name: template wallpaper script
-  template:
+- name: Template wallpaper script
+  ansible.builtin.template:
     src: fehbg
     dest: /home/{{ archlinux_username }}/.fehbg
     owner: "{{ archlinux_username }}"
     group: users
-    mode: 0700
+    mode: "0700"
   become: true
   become_user: "{{ archlinux_username }}"

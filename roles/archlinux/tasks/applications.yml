@@ -1,6 +1,6 @@
 ---
-- name: install utilities
-  pacman:
+- name: Install utilities
+  community.general.pacman:
     name:
       - aria2
       - bcc-tools
@@ -27,8 +27,8 @@
       - which
   become: true
 
-- name: install applications
-  pacman:
+- name: Install applications
+  community.general.pacman:
     name:
       - firefox
       - hunspell-en_US # Firefox spellcheck
