@@ -3,9 +3,9 @@ general {
     interval = 1
 }
 
-order += "cpu_temperature 0"
-cpu_temperature 0 {
-    format = "CPU: %degrees °C"
+order += "cpu_usage"
+cpu_usage {
+    format = "CPU: %usage"
 }
 
 order += "memory"
